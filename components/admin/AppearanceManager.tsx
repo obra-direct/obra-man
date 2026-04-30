@@ -50,10 +50,12 @@ export default function AppearanceManager({ initialHeroImageUrl }: Props) {
 
     try {
       const res = await fetch("/api/admin/upload", { method: "POST", body: form });
-      const data = await res.json();
+      let data: { url?: string; error?: string } = {};
+      const text = await res.text();
+      try { data = JSON.parse(text); } catch { /* non-JSON response */ }
       if (!res.ok) throw new Error(data.error ?? "Upload failed");
       setUploadStatus("idle");
-      await handleSave(data.url);
+      await handleSave(data.url!);
     } catch (err: unknown) {
       setUploadError(err instanceof Error ? err.message : "Upload failed");
       setUploadStatus("error");
