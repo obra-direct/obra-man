@@ -51,6 +51,18 @@ export const CATEGORY_PATH_ROWS: CategoryPathRow[] = [
     slugEn: "civil-works",
   },
   {
+    categoryId: "hormigonado-estructuras",
+    slugEs: "hormigonado-y-estructuras",
+    slugCa: "formigonat-i-estructures",
+    slugEn: "concrete-work-and-structures",
+  },
+  {
+    categoryId: "construccion-piscinas",
+    slugEs: "construccion-de-piscinas",
+    slugCa: "construccio-de-piscines",
+    slugEn: "swimming-pool-construction",
+  },
+  {
     categoryId: "demolicion-derribo",
     slugEs: "demolicion-y-derribo",
     slugCa: "demolicio-i-enderroc",
