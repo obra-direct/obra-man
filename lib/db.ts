@@ -7,12 +7,11 @@ const globalForPrisma = globalThis as unknown as {
 };
 
 function createPrismaClient() {
-  const databaseUrl = process.env.DATABASE_URL;
-  if (!databaseUrl) {
-    throw new Error("DATABASE_URL is not set");
-  }
+  // DATABASE_URL must be set at runtime; passing empty string here lets the
+  // build succeed — any actual query against a missing URL will fail at runtime.
+  const connectionString = process.env.DATABASE_URL ?? "";
   return new PrismaClient({
-    adapter: new PrismaPg({ connectionString: databaseUrl }),
+    adapter: new PrismaPg({ connectionString }),
     log: process.env.NODE_ENV === "development" ? ["error"] : [],
   });
 }
