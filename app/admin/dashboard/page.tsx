@@ -12,11 +12,14 @@ export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session) redirect("/admin");
 
-  const [totalLeads, newLeads, recentLeads] = await Promise.all([
+  const [totalLeads, newLeads] = await Promise.all([
     prisma.lead.count(),
     prisma.lead.count({ where: { status: "new" } }),
-    prisma.lead.findMany({ take: 5, orderBy: { createdAt: "desc" } }),
   ]);
+  const recentLeads = await prisma.lead.findMany({
+    take: 5,
+    orderBy: { createdAt: "desc" },
+  });
 
   const stats = [
     { label: "Total Leads", value: totalLeads, icon: "📋", color: "bg-blue-50 text-blue-700" },
