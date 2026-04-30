@@ -12,6 +12,11 @@ export default defineConfig({
   datasource: {
     // Prisma migrations need a direct (non-pgbouncer) connection.
     // On Neon: set DATABASE_URL_UNPOOLED; for other providers DATABASE_URL is fine.
-    url: process.env["DATABASE_URL_UNPOOLED"] ?? process.env["DATABASE_URL"],
+    url:
+      process.env["DATABASE_URL_UNPOOLED"] ??
+      process.env["OBRA_DATABASE_URL_UNPOOLED"] ??
+      process.env["DATABASE_URL"] ??
+      process.env["OBRA_DATABASE_URL"] ??
+      process.env["OBRA_POSTGRES_URL"],
   },
 });
