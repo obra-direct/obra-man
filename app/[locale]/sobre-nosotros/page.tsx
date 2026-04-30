@@ -91,33 +91,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
     },
   ];
 
-  const team = [
-    {
-      name: "Jordi Martínez",
-      initials: "JM",
-      roleEs: "Director de Obra",
-      roleCa: "Director d'Obra",
-      roleEn: "Site Director",
-      exp: "20+",
-    },
-    {
-      name: "Carmen López",
-      initials: "CL",
-      roleEs: "Arquitecta Jefe",
-      roleCa: "Arquitecta Cap",
-      roleEn: "Chief Architect",
-      exp: "15+",
-    },
-    {
-      name: "Marc Puig",
-      initials: "MP",
-      roleEs: "Director de Proyectos",
-      roleCa: "Director de Projectes",
-      roleEn: "Project Manager",
-      exp: "12+",
-    },
-  ];
-
   const stats = [
     { value: "+500", label: locale === "ca" ? "Projectes completats" : locale === "en" ? "Projects completed" : "Proyectos completados" },
     { value: "15+", label: locale === "ca" ? "Anys d'experiència" : locale === "en" ? "Years of experience" : "Años de experiencia" },
@@ -190,42 +163,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 <p className="text-gray-500 text-sm leading-relaxed">
                   {locale === "ca" ? v.descCa : locale === "en" ? v.descEn : v.descEs}
                 </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="py-20 bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <span className="inline-block text-xs font-semibold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full mb-4">
-              {locale === "ca" ? "L'equip" : locale === "en" ? "The Team" : "El Equipo"}
-            </span>
-            <h2 className="section-title">{t("team")}</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {team.map((member) => (
-              <div
-                key={member.name}
-                className="bg-gray-50 rounded-2xl p-7 border border-gray-100 hover:border-gold/30 hover:shadow-md transition-all duration-200 group text-center"
-              >
-                <div className="w-16 h-16 bg-navy group-hover:bg-navy-light rounded-2xl mx-auto mb-4 flex items-center justify-center transition-colors duration-200 shadow-md">
-                  <span className="text-gold font-bold text-xl">{member.initials}</span>
-                </div>
-                <h3 className="font-bold text-navy text-lg">{member.name}</h3>
-                <p className="text-gold text-sm font-semibold mt-1">
-                  {locale === "ca" ? member.roleCa : locale === "en" ? member.roleEn : member.roleEs}
-                </p>
-                <div className="flex items-center justify-center gap-1 mt-3">
-                  <svg className="w-3.5 h-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <p className="text-gray-400 text-xs">
-                    {member.exp} {locale === "ca" ? "anys" : locale === "en" ? "yrs exp." : "años exp."}
-                  </p>
-                </div>
               </div>
             ))}
           </div>
