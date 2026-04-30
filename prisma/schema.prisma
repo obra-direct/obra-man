@@ -54,9 +54,10 @@ model AdminUser {
 }
 
 model SiteSettings {
-  id           String   @id @default(cuid())
-  heroImageUrl String?
-  updatedAt    DateTime @updatedAt
+  id                  String   @id @default(cuid())
+  heroImageUrl        String?
+  heroImagePosition   String?  @default("50% 50%")
+  updatedAt           DateTime @updatedAt
 }
 
 model SiteContacts {

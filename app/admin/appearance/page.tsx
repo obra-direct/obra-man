@@ -23,7 +23,10 @@ export default async function AppearancePage() {
             Personaliza la imagen de fondo del hero principal de la página de inicio.
           </p>
         </div>
-        <AppearanceManager initialHeroImageUrl={settings.heroImageUrl} />
+        <AppearanceManager
+          initialHeroImageUrl={settings.heroImageUrl}
+          initialHeroImagePosition={settings.heroImagePosition}
+        />
       </div>
     </AdminShell>
   );

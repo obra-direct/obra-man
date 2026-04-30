@@ -402,7 +402,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <img
             src={settings.heroImageUrl}
             alt="Construcción en Barcelona"
-            className="h-full w-full min-h-full min-w-full object-cover object-center md:scale-105 md:object-[center_40%]"
+            className="h-full w-full min-h-full min-w-full object-cover md:scale-105"
+            style={{ objectPosition: settings.heroImagePosition }}
             fetchPriority="high"
           />
           {/*
