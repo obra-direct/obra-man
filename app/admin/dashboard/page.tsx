@@ -4,6 +4,7 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import AdminShell from "@/components/admin/AdminShell";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = { title: "Dashboard" };
 
@@ -50,9 +51,9 @@ export default async function DashboardPage() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-100">
           <div className="p-6 border-b border-gray-100 flex items-center justify-between">
             <h2 className="font-semibold text-gray-900">Leads Recientes</h2>
-            <a href="/admin/leads" className="text-sm text-gold hover:text-gold-dark font-medium">
+            <Link href="/admin/leads" className="text-sm text-gold hover:text-gold-dark font-medium">
               Ver todos →
-            </a>
+            </Link>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">

@@ -107,6 +107,7 @@ export default function AppearanceManager({ initialHeroImageUrl }: Props) {
           </div>
           <div className="relative h-56 bg-gray-100 mx-5 mb-5 rounded-xl overflow-hidden">
             {/* Preview with gradient overlay */}
+            {/* eslint-disable-next-line @next/next/no-img-element -- arbitrary hero preview URLs */}
             <img
               src={imageUrl}
               alt="Hero preview"

@@ -5,6 +5,7 @@ import { prisma } from "@/lib/db";
 import AdminShell from "@/components/admin/AdminShell";
 import SeoManager from "@/components/admin/SeoManager";
 import type { Metadata } from "next";
+import type { SeoPage } from "@prisma/client";
 
 export const metadata: Metadata = { title: "SEO" };
 
@@ -25,8 +26,7 @@ export default async function SeoAdminPage() {
     prisma.seoGlobal.findFirst(),
   ]);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const pagesMap: Record<string, any> = {};
+  const pagesMap: Record<string, SeoPage> = {};
   seoPages.forEach((p) => {
     pagesMap[p.slug] = p;
   });
