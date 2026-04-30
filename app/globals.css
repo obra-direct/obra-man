@@ -100,6 +100,12 @@
   }
 }
 
+@layer components {
+  /* Semantic border-radius scale for consistent rounding across components */
+  .card-sm  { @apply rounded-xl; }   /* compact: badges, icon boxes, small cards */
+  .card-lg  { @apply rounded-2xl; }  /* section-level: lead form, testimonials, modal */
+}
+
 @layer utilities {
   .scrollbar-hide {
     -ms-overflow-style: none;

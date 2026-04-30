@@ -52,7 +52,7 @@ export default function Footer({ locale, contacts }: FooterProps) {
           {/* Brand */}
           <div className="md:col-span-5">
             <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-10 h-10 bg-gold rounded-lg flex items-center justify-center p-1.5 shrink-0">
+              <div className="w-14 h-9 bg-gold rounded-md flex items-center justify-center p-1.5 shrink-0">
                 <Image
                   src="/logo.png"
                   alt="ObraDirecta logo"

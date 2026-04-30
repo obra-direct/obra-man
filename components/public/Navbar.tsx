@@ -112,7 +112,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
           <div className="flex items-center justify-between h-14 md:h-16">
             {/* Logo */}
             <Link href={homePath} className="flex items-center gap-2.5 shrink-0">
-              <div className="w-8 h-8 md:w-9 md:h-9 bg-gold rounded-lg flex items-center justify-center p-1 md:p-1.5 shrink-0">
+              <div className="w-12 h-7 md:w-14 md:h-8 bg-gold rounded-md flex items-center justify-center p-1 md:p-1.5 shrink-0">
                 <Image
                   src="/logo.png"
                   alt="ObraDirecta logo"

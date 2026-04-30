@@ -102,8 +102,8 @@ function UspsSection() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0" />
         </svg>
       ),
-      iconBg: "bg-amber-50",
-      iconColor: "text-amber-600",
+      iconBg: "bg-gold/10",
+      iconColor: "text-gold",
     },
     {
       key: "delivery" as const,
@@ -112,8 +112,8 @@ function UspsSection() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
         </svg>
       ),
-      iconBg: "bg-blue-50",
-      iconColor: "text-blue-600",
+      iconBg: "bg-gold/10",
+      iconColor: "text-gold",
     },
     {
       key: "quality" as const,
@@ -122,8 +122,8 @@ function UspsSection() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
         </svg>
       ),
-      iconBg: "bg-green-50",
-      iconColor: "text-green-600",
+      iconBg: "bg-gold/10",
+      iconColor: "text-gold",
     },
     {
       key: "projects" as const,
@@ -132,8 +132,8 @@ function UspsSection() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5" />
         </svg>
       ),
-      iconBg: "bg-purple-50",
-      iconColor: "text-purple-600",
+      iconBg: "bg-gold/10",
+      iconColor: "text-gold",
     },
     {
       key: "quote" as const,
@@ -142,8 +142,8 @@ function UspsSection() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
         </svg>
       ),
-      iconBg: "bg-orange-50",
-      iconColor: "text-orange-600",
+      iconBg: "bg-gold/10",
+      iconColor: "text-gold",
     },
     {
       key: "team" as const,
@@ -152,8 +152,8 @@ function UspsSection() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
         </svg>
       ),
-      iconBg: "bg-slate-50",
-      iconColor: "text-slate-600",
+      iconBg: "bg-gold/10",
+      iconColor: "text-gold",
     },
   ];
 
@@ -162,7 +162,7 @@ function UspsSection() {
       <div className="container-custom">
         <div className="text-center mb-2 sm:mb-4">
           <span className="inline-block text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-gold bg-gold/10 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full mb-2 sm:mb-4">
-            ¿Por qué elegirnos?
+            {t("badge")}
           </span>
           <h2 className="section-title">{t("title")}</h2>
         </div>
@@ -250,10 +250,10 @@ function ServicesPreview({ locale }: { locale: Locale }) {
       <div className="container-custom">
         <div className="text-center mb-2 sm:mb-4">
           <span className="inline-block text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-gold bg-gold/10 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full mb-2 sm:mb-4">
-            {locale === "ca" ? "El nostre treball" : locale === "en" ? "Our Work" : "Nuestros Servicios"}
+            {t("badge")}
           </span>
           <h2 className="section-title">{t("title")}</h2>
-          <p className="section-subtitle max-sm:line-clamp-2">{t("subtitle")}</p>
+          <p className="section-subtitle">{t("subtitle")}</p>
         </div>
 
         {/* Mobile: 4 categories — layout aligned with /servicios category headers */}
@@ -287,8 +287,8 @@ function ServicesPreview({ locale }: { locale: Locale }) {
           {desktopCategories.map((cat) => (
             <Link
               key={cat.id}
-              href={servicePath}
-              className="group bg-white border border-gray-200 rounded-lg sm:rounded-2xl p-2 sm:p-4 hover:border-gold/50 hover:shadow-lg transition-all duration-200 flex flex-col items-center text-center gap-1 sm:gap-2 min-h-0"
+              href={categoryHref(cat.id)}
+              className="group bg-white border border-gray-200 rounded-xl sm:rounded-2xl p-2 sm:p-4 hover:border-gold/50 hover:shadow-lg transition-all duration-200 flex flex-col items-center text-center gap-1 sm:gap-2 min-h-0"
             >
               <div className="text-lg sm:text-3xl shrink-0 group-hover:scale-110 transition-transform duration-200">
                 {cat.icon}
@@ -355,8 +355,8 @@ function TestimonialsSection() {
               </svg>
               <p className="text-white/85 text-xs sm:text-sm leading-snug sm:leading-relaxed mb-3 sm:mb-6 line-clamp-5 sm:line-clamp-none flex-1">{item.text}</p>
               <div className="border-t border-white/10 pt-3 sm:pt-4 flex items-center gap-2 sm:gap-3 mt-auto">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 bg-gold/20 rounded-full flex items-center justify-center shrink-0">
-                  <span className="text-gold font-bold text-xs sm:text-sm">{item.name[0]}</span>
+                <div className="w-10 h-10 bg-gold/30 rounded-full flex items-center justify-center shrink-0 ring-1 ring-gold/40">
+                  <span className="text-gold font-bold text-sm">{item.name[0]}</span>
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="font-semibold text-white text-xs sm:text-sm truncate">{item.name}</p>
@@ -380,8 +380,10 @@ function TestimonialsSection() {
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const [t, settings] = await Promise.all([
+  const [t, tFooter, tContact, settings] = await Promise.all([
     getTranslations({ locale, namespace: "hero" }),
+    getTranslations({ locale, namespace: "footer" }),
+    getTranslations({ locale, namespace: "contact" }),
     getSettings(),
   ]);
   const contactPath = locale === "es" ? "/contacto" : `/${locale}${locale === "ca" ? "/contacte" : "/contact"}`;
@@ -418,10 +420,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <div className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse shrink-0" />
               <span className="text-gold text-xs sm:text-sm font-semibold">Barcelona · Cataluña</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white leading-[1.1] mb-3 sm:mb-5 text-balance">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-3 sm:mb-5 text-balance">
               {t("headline")}
             </h1>
-            <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-5 sm:mb-8 leading-snug sm:leading-relaxed max-w-xl line-clamp-4 sm:line-clamp-none">
+            <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-5 sm:mb-8 leading-relaxed max-w-xl">
               {t("subheadline")}
             </p>
             <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -443,7 +445,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               {[
                 { value: "+500", label: locale === "ca" ? "Projectes" : locale === "en" ? "Projects" : "Proyectos" },
                 { value: "15+", label: locale === "ca" ? "Anys exp." : locale === "en" ? "Years exp." : "Años exp." },
-                { value: "100%", label: locale === "ca" ? "Sat." : locale === "en" ? "Sat." : "Sat." },
+                { value: "100%", label: locale === "ca" ? "Satisfacció" : locale === "en" ? "Satisfaction" : "Satisfacción" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center sm:text-left">
                   <div className="text-xl sm:text-3xl font-extrabold text-gold tabular-nums">{stat.value}</div>
@@ -477,7 +479,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <h2 className="section-title">
                 {locale === "es" ? t("cta") : locale === "ca" ? "Sol·licita el teu Pressupost Gratis" : "Get Your Free Quote"}
               </h2>
-              <p className="section-subtitle max-sm:line-clamp-2">
+              <p className="section-subtitle">
                 {locale === "es" ? "Respuesta garantizada en menos de 24 horas. Sin compromiso." : locale === "ca" ? "Resposta garantida en menys de 24 hores. Sense compromís." : "Response guaranteed in under 24 hours. No obligation."}
               </p>
               <ul className="mt-4 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 sm:gap-y-3 lg:grid-cols-1 lg:gap-y-3">
@@ -495,16 +497,18 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
               <div className="mt-5 sm:mt-10 p-3 sm:p-5 bg-navy/5 rounded-xl sm:rounded-2xl border border-navy/10">
                 <div className="flex items-center gap-3 mb-2">
-                  <svg className="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <svg className="w-5 h-5 text-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                   </svg>
-                  <span className="text-sm font-semibold text-navy">
-                    {locale === "ca" ? "O truca'ns directament" : locale === "en" ? "Or call us directly" : "O llámanos directamente"}
-                  </span>
+                  <span className="text-sm font-semibold text-navy">{tFooter("callUs")}</span>
                 </div>
-                <p className="text-xs text-gray-500">
-                  {locale === "ca" ? "Disponibles de Dilluns a Divendres, 8:00 – 18:00" : locale === "en" ? "Available Monday to Friday, 8:00 – 18:00" : "Disponibles Lunes a Viernes, 8:00 – 18:00"}
-                </p>
+                <a
+                  href={`tel:${tFooter("phone")}`}
+                  className="text-base font-bold text-navy hover:text-gold transition-colors duration-150 tracking-wide"
+                >
+                  {tFooter("phone")}
+                </a>
+                <p className="text-xs text-gray-500 mt-1">{tContact("hours")}</p>
               </div>
             </div>
 

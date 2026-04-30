@@ -60,8 +60,36 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         </div>
       </section>
 
-      {/* Category Navigation */}
-      <div className="bg-white border-b border-gray-100 sticky top-14 md:top-16 z-40 shadow-sm">
+      {/* Category Navigation — mobile grid */}
+      <div className="md:hidden bg-white border-b border-gray-100">
+        <div className="container-custom py-4">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-3 px-0.5">
+            {locale === "ca" ? "Categories" : locale === "en" ? "Categories" : "Categorías"}
+          </p>
+          <div className="grid grid-cols-2 gap-2">
+            {SERVICE_CATEGORIES.map((cat) => {
+              const route = getCategoryRouteDefByCategoryId(cat.id);
+              const href =
+                route != null ? categoryListingHref(locale as Locale, route) : `#${cat.id}`;
+              return (
+                <Link
+                  key={cat.id}
+                  href={href}
+                  className="flex items-center gap-2.5 p-3 rounded-xl border border-gray-100 bg-gray-50 active:scale-95 hover:border-gold hover:bg-gold/5 transition-all duration-150"
+                >
+                  <span className="text-xl leading-none shrink-0">{cat.icon}</span>
+                  <span className="text-xs font-semibold text-gray-700 leading-tight">
+                    {getCategoryName(cat, locale as Locale)}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Category Navigation — desktop sticky scroll bar */}
+      <div className="hidden md:block bg-white border-b border-gray-100 sticky top-16 z-40 shadow-sm">
         <div className="container-custom">
           <div className="flex gap-2 overflow-x-auto py-3 scrollbar-hide">
             {SERVICE_CATEGORIES.map((cat) => {

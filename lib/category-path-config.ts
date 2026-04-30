@@ -68,4 +68,10 @@ export const CATEGORY_PATH_ROWS: CategoryPathRow[] = [
     slugCa: "demolicio-i-enderroc",
     slugEn: "demolition",
   },
+  {
+    categoryId: "arquitectura",
+    slugEs: "arquitectura",
+    slugCa: "arquitectura",
+    slugEn: "architecture",
+  },
 ];

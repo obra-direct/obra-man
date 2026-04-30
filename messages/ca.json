@@ -19,6 +19,7 @@
     "projects": "+500 projectes a Catalunya"
   },
   "usps": {
+    "badge": "Per què triar-nos",
     "title": "Per què triar-nos?",
     "price": {
       "title": "Millor preu del mercat",
@@ -60,6 +61,7 @@
     ]
   },
   "services": {
+    "badge": "Els nostres serveis",
     "title": "Els Nostres Serveis",
     "subtitle": "Oferim més de 60 serveis de construcció i reforma a Barcelona i tota Catalunya",
     "viewAll": "Veure tots els serveis",
@@ -72,7 +74,8 @@
       "banos-cocinas": "Banys i Cuines",
       "urbanizacion-exterior": "Urbanització i Exterior",
       "obras-civiles": "Obres Civils i Especials",
-      "demolicion-derribo": "Demolició i Enderroc"
+      "demolicion-derribo": "Demolició i Enderroc",
+      "arquitectura": "Serveis d'Arquitectura"
     }
   },
   "form": {
@@ -126,6 +129,7 @@
   "footer": {
     "address": "Barcelona, Catalunya, Espanya",
     "phone": "+34 600 000 000",
+    "callUs": "O truca'ns directament",
     "email": "info@obradirecta.cat",
     "rights": "Tots els drets reservats",
     "privacy": "Política de privacitat",

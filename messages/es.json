@@ -19,6 +19,7 @@
     "projects": "+500 proyectos en Cataluña"
   },
   "usps": {
+    "badge": "Por qué elegirnos",
     "title": "¿Por qué elegirnos?",
     "price": {
       "title": "Mejor precio del mercado",
@@ -60,6 +61,7 @@
     ]
   },
   "services": {
+    "badge": "Nuestros servicios",
     "title": "Nuestros Servicios",
     "subtitle": "Ofrecemos más de 60 servicios de construcción y reforma en Barcelona y toda Cataluña",
     "viewAll": "Ver todos los servicios",
@@ -72,7 +74,8 @@
       "banos-cocinas": "Baños y Cocinas",
       "urbanizacion-exterior": "Urbanización y Exterior",
       "obras-civiles": "Obras Civiles y Especiales",
-      "demolicion-derribo": "Demolición y Derribo"
+      "demolicion-derribo": "Demolición y Derribo",
+      "arquitectura": "Servicios de Arquitectura"
     }
   },
   "form": {
@@ -126,6 +129,7 @@
   "footer": {
     "address": "Barcelona, Cataluña, España",
     "phone": "+34 600 000 000",
+    "callUs": "O llámanos directamente",
     "email": "info@obradirecta.cat",
     "rights": "Todos los derechos reservados",
     "privacy": "Política de privacidad",

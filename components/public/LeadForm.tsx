@@ -17,7 +17,7 @@ function buildSchema(t: ReturnType<typeof useTranslations>) {
       .string()
       .min(1, t("form.validation.phoneRequired"))
       .regex(SPANISH_PHONE_REGEX, t("form.validation.phoneInvalid")),
-    service: z.string().min(1, t("form.validation.serviceRequired")),
+    service: z.string().optional(),
     message: z.string().optional(),
     language: z.string(),
     gdpr: z.boolean().refine((v) => v === true, { message: t("form.validation.gdprRequired") }),
@@ -27,7 +27,7 @@ function buildSchema(t: ReturnType<typeof useTranslations>) {
 type FormValues = {
   name: string;
   phone: string;
-  service: string;
+  service?: string;
   message?: string;
   language: string;
   gdpr: boolean;
@@ -158,7 +158,7 @@ export default function LeadForm({
       {/* Service */}
       <div>
         <label htmlFor="lead-service" className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">
-          {t("form.service")} <span className="text-red-400">*</span>
+          {t("form.service")}
         </label>
         <select
           id="lead-service"
