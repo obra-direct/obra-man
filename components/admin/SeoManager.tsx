@@ -510,18 +510,21 @@ function GlobalSeoForm({
 
 export default function SeoManager({
   pageSlugs,
+  categorySlugs,
   initialPages,
   initialGlobal,
   defaultSeo,
   adminLang,
 }: {
   pageSlugs: PageSlugConfig[];
+  categorySlugs?: PageSlugConfig[];
   initialPages: SeoPage[];
   initialGlobal: SeoGlobal;
   defaultSeo?: DefaultSeoMap;
   adminLang?: "es" | "en";
 }) {
   const lang = adminLang || "es";
+  const allSlugs = [...pageSlugs, ...(categorySlugs ?? [])];
   const [activeTab, setActiveTab] = useState<string>("global");
 
   // Build a map keyed by "slug__locale" for easy lookup
@@ -530,29 +533,71 @@ export default function SeoManager({
     pagesMap[`${p.slug}__${p.locale}`] = p;
   });
 
-  const tabs = [
-    { id: "global", label: `🌐 ${lang === "en" ? "Global" : "Global"}` },
-    ...pageSlugs.map((p) => ({ id: p.slug, label: `📄 ${lang === "en" ? p.labelEn : p.labelEs}` })),
-  ];
+  const activeSlugConfig = allSlugs.find((p) => p.slug === activeTab);
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-100">
       {/* Tab header */}
       <div className="border-b border-gray-100 overflow-x-auto">
-        <div className="flex min-w-max">
-          {tabs.map((tab) => (
+        <div className="flex min-w-max items-stretch">
+          {/* Global tab */}
+          <button
+            onClick={() => setActiveTab("global")}
+            className={`px-5 py-3.5 text-sm font-medium whitespace-nowrap transition-colors border-b-2 ${
+              activeTab === "global"
+                ? "border-gold text-gold"
+                : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+            }`}
+          >
+            🌐 Global
+          </button>
+
+          {/* Divider + "Pages" group label */}
+          <div className="flex items-center">
+            <div className="w-px h-5 bg-gray-200 mx-1" />
+            <span className="px-2 text-[10px] font-semibold uppercase tracking-widest text-gray-400 select-none">
+              {lang === "en" ? "Pages" : "Páginas"}
+            </span>
+          </div>
+
+          {pageSlugs.map((p) => (
             <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-5 py-3.5 text-sm font-medium whitespace-nowrap transition-colors border-b-2 ${
-                activeTab === tab.id
+              key={p.slug}
+              onClick={() => setActiveTab(p.slug)}
+              className={`px-4 py-3.5 text-sm font-medium whitespace-nowrap transition-colors border-b-2 ${
+                activeTab === p.slug
                   ? "border-gold text-gold"
                   : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
               }`}
             >
-              {tab.label}
+              📄 {lang === "en" ? p.labelEn : p.labelEs}
             </button>
           ))}
+
+          {/* Divider + "Categories" group label */}
+          {categorySlugs && categorySlugs.length > 0 && (
+            <>
+              <div className="flex items-center">
+                <div className="w-px h-5 bg-gray-200 mx-1" />
+                <span className="px-2 text-[10px] font-semibold uppercase tracking-widest text-gray-400 select-none">
+                  {lang === "en" ? "Categories" : "Categorías"}
+                </span>
+              </div>
+              {categorySlugs.map((p) => (
+                <button
+                  key={p.slug}
+                  onClick={() => setActiveTab(p.slug)}
+                  className={`px-4 py-3.5 text-sm font-medium whitespace-nowrap transition-colors border-b-2 ${
+                    activeTab === p.slug
+                      ? "border-gold text-gold"
+                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                  }`}
+                >
+                  🗂️ {lang === "en" ? p.labelEn : p.labelEs}
+                </button>
+              ))}
+            </>
+          )}
         </div>
       </div>
 
@@ -560,15 +605,15 @@ export default function SeoManager({
       <div className="p-6">
         {activeTab === "global" ? (
           <GlobalSeoForm initialGlobal={initialGlobal} adminLang={lang} />
-        ) : (
+        ) : activeSlugConfig ? (
           <SeoPageForm
             key={activeTab}
-            slugConfig={pageSlugs.find((p) => p.slug === activeTab)!}
+            slugConfig={activeSlugConfig}
             pagesMap={pagesMap}
             defaultSeo={defaultSeo}
             adminLang={lang}
           />
-        )}
+        ) : null}
       </div>
     </div>
   );

@@ -6,37 +6,47 @@ import { prisma } from "@/lib/db";
 import AdminShell from "@/components/admin/AdminShell";
 import SeoManager from "@/components/admin/SeoManager";
 import type { Metadata } from "next";
+import { CATEGORY_ROUTE_DEFS } from "@/lib/service-category-routes";
+import { SERVICE_CATEGORIES } from "@/lib/services-data";
+import { seoSlugForCategory } from "@/lib/service-category-routes";
 
 export const metadata: Metadata = { title: "SEO" };
 
+/** Main site pages */
 const PAGE_SLUGS = [
-  { slug: "home",                labelEs: "Inicio",               labelEn: "Home" },
-  { slug: "services",            labelEs: "Servicios",            labelEn: "Services" },
-  { slug: "services-demolition", labelEs: "Demolición y Derribo", labelEn: "Demolition" },
-  { slug: "contact",             labelEs: "Contacto",             labelEn: "Contact" },
-  { slug: "about",               labelEs: "Sobre Nosotros",       labelEn: "About Us" },
+  { slug: "home",     labelEs: "Inicio",          labelEn: "Home" },
+  { slug: "services", labelEs: "Servicios",        labelEn: "Services" },
+  { slug: "contact",  labelEs: "Contacto",         labelEn: "Contact" },
+  { slug: "about",    labelEs: "Sobre Nosotros",   labelEn: "About Us" },
 ];
 
-/** Hardcoded fallback values that the public pages show when no DB record exists.
- *  Populated here so the admin form always shows something meaningful to edit. */
-const DEFAULT_SEO: Record<string, Record<string, { title: string; metaDescription?: string; h1?: string }>> = {
+/** Service category pages — generated from the route config so it stays in sync */
+const CATEGORY_SLUGS = CATEGORY_ROUTE_DEFS.map((route) => {
+  const cat = SERVICE_CATEGORIES.find((c) => c.id === route.categoryId);
+  return {
+    slug: seoSlugForCategory(route.categoryId),
+    labelEs: cat?.nameEs ?? route.categoryId,
+    labelEn: cat?.nameEn ?? route.categoryId,
+  };
+});
+
+/** Fallback SEO values the public pages show when no DB record exists.
+ *  Pre-fills the admin form so users see and can edit the actual current values. */
+const STATIC_DEFAULT_SEO: Record<string, Record<string, { title?: string; metaDescription?: string; h1?: string }>> = {
   home: {
     es: {
       title: "ObraDirecta — Constructora en Barcelona | Mejor Precio Garantizado",
-      metaDescription:
-        "Empresa constructora en Barcelona. +500 proyectos en Cataluña. Mejor precio garantizado, entrega rápida, calidad certificada. Presupuesto gratis en 24h.",
+      metaDescription: "Empresa constructora en Barcelona. +500 proyectos en Cataluña. Mejor precio garantizado, entrega rápida, calidad certificada. Presupuesto gratis en 24h.",
       h1: "Constructoras de Confianza en Barcelona",
     },
     ca: {
       title: "ObraDirecta — Constructora a Barcelona | Millor Preu Garantit",
-      metaDescription:
-        "Empresa constructora a Barcelona. +500 projectes a Catalunya. Millor preu garantit, entrega ràpida, qualitat certificada. Pressupost gratis en 24h.",
+      metaDescription: "Empresa constructora a Barcelona. +500 projectes a Catalunya. Millor preu garantit, entrega ràpida, qualitat certificada. Pressupost gratis en 24h.",
       h1: "Constructores de Confiança a Barcelona",
     },
     en: {
       title: "ObraDirecta — Construction Company Barcelona | Best Price Guaranteed",
-      metaDescription:
-        "Construction company in Barcelona. +500 projects in Catalonia. Best price guaranteed, fast delivery, certified quality. Free quote in 24h.",
+      metaDescription: "Construction company in Barcelona. +500 projects in Catalonia. Best price guaranteed, fast delivery, certified quality. Free quote in 24h.",
       h1: "Trusted Construction Company in Barcelona",
     },
   },
@@ -56,11 +66,6 @@ const DEFAULT_SEO: Record<string, Record<string, { title: string; metaDescriptio
       metaDescription: "More than 60 construction and renovation services in Barcelona and Catalonia.",
       h1: "Our Services",
     },
-  },
-  "services-demolition": {
-    es: { title: "Demolición y Derribo en Barcelona | ObraDirecta", h1: "Demolición y Derribo" },
-    ca: { title: "Demolició i Enderroc a Barcelona | ObraDirecta", h1: "Demolició i Enderroc" },
-    en: { title: "Demolition Services in Barcelona | ObraDirecta", h1: "Demolition Services" },
   },
   contact: {
     es: {
@@ -98,6 +103,34 @@ const DEFAULT_SEO: Record<string, Record<string, { title: string; metaDescriptio
   },
 };
 
+/** Build default SEO entries for every service category from the category names */
+function buildCategoryDefaults(): Record<string, Record<string, { title?: string; metaDescription?: string; h1?: string }>> {
+  const defaults: Record<string, Record<string, { title?: string; metaDescription?: string; h1?: string }>> = {};
+  for (const route of CATEGORY_ROUTE_DEFS) {
+    const cat = SERVICE_CATEGORIES.find((c) => c.id === route.categoryId);
+    if (!cat) continue;
+    const seoSlug = seoSlugForCategory(route.categoryId);
+    defaults[seoSlug] = {
+      es: {
+        title: `${cat.nameEs} en Barcelona | ObraDirecta`,
+        metaDescription: `Profesionales en ${cat.nameEs} en Barcelona y Cataluña. Presupuesto gratuito sin compromiso.`,
+        h1: cat.nameEs,
+      },
+      ca: {
+        title: `${cat.nameCa} a Barcelona | ObraDirecta`,
+        metaDescription: `Professionals en ${cat.nameCa} a Barcelona i Catalunya. Pressupost gratuït sense compromís.`,
+        h1: cat.nameCa,
+      },
+      en: {
+        title: `${cat.nameEn} in Barcelona | ObraDirecta`,
+        metaDescription: `Professional ${cat.nameEn} services in Barcelona and Catalonia. Free no-obligation quote.`,
+        h1: cat.nameEn,
+      },
+    };
+  }
+  return defaults;
+}
+
 export default async function SeoAdminPage() {
   const session = await getServerSession(authOptions);
   if (!session) redirect("/admin");
@@ -109,6 +142,8 @@ export default async function SeoAdminPage() {
     prisma.seoPage.findMany(),
     prisma.seoGlobal.findFirst(),
   ]);
+
+  const defaultSeo = { ...STATIC_DEFAULT_SEO, ...buildCategoryDefaults() };
 
   return (
     <AdminShell>
@@ -123,9 +158,10 @@ export default async function SeoAdminPage() {
         </div>
         <SeoManager
           pageSlugs={PAGE_SLUGS}
+          categorySlugs={CATEGORY_SLUGS}
           initialPages={seoPages}
           initialGlobal={seoGlobal}
-          defaultSeo={DEFAULT_SEO}
+          defaultSeo={defaultSeo}
           adminLang={adminLang}
         />
       </div>
