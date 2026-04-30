@@ -8,7 +8,7 @@ const globalForPrisma = globalThis as unknown as {
 
 function createPrismaClient() {
   // DATABASE_URL must be set at runtime; passing empty string here lets the
-  // build succeed — any actual query against a missing URL will fail at runtime.
+  // build succeed - any actual query against a missing URL will fail at runtime.
   const connectionString =
     process.env.DATABASE_URL ??
     process.env.OBRA_DATABASE_URL ??

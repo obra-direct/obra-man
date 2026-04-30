@@ -108,7 +108,7 @@ export default function LeadsTable({ initialLeads }: { initialLeads: Lead[] }) {
                   </td>
                   <td className="px-6 py-4 text-gray-600 max-w-xs truncate">{lead.service}</td>
                   <td className="px-6 py-4 text-gray-500 max-w-xs truncate">
-                    {lead.message || <span className="text-gray-300">—</span>}
+                    {lead.message || <span className="text-gray-300">-</span>}
                   </td>
                   <td className="px-6 py-4">
                     <span className="uppercase text-xs font-semibold text-gray-500">{lead.language}</span>

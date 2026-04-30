@@ -11,6 +11,7 @@ import {
   getCategoryRouteDefByCategoryId,
 } from "@/lib/service-category-routes";
 import type { Locale } from "@/i18n";
+import TestimonialsCarousel from "@/components/public/TestimonialsCarousel";
 
 export async function generateMetadata({
   params,
@@ -21,9 +22,9 @@ export async function generateMetadata({
   const seo = await getSeoForPage("home", locale);
   if (!seo.title) {
     const defaultTitles: Record<string, string> = {
-      es: "ObraDirecta — Constructora en Barcelona | Mejor Precio Garantizado",
-      ca: "ObraDirecta — Constructora a Barcelona | Millor Preu Garantit",
-      en: "ObraDirecta — Construction Company Barcelona | Best Price Guaranteed",
+      es: "ObraDirecta - Constructora en Barcelona | Mejor Precio Garantizado",
+      ca: "ObraDirecta - Constructora a Barcelona | Millor Preu Garantit",
+      en: "ObraDirecta - Construction Company Barcelona | Best Price Guaranteed",
     };
     seo.title = defaultTitles[locale] || defaultTitles.es;
   }
@@ -256,7 +257,7 @@ function ServicesPreview({ locale }: { locale: Locale }) {
           <p className="section-subtitle">{t("subtitle")}</p>
         </div>
 
-        {/* Mobile: 4 categories — layout aligned with /servicios category headers */}
+        {/* Mobile: 4 categories - layout aligned with /servicios category headers */}
         <div className="mt-5 grid grid-cols-2 gap-3 sm:hidden">
           {mobileCategories.map((cat) => (
             <Link
@@ -317,12 +318,6 @@ function ServicesPreview({ locale }: { locale: Locale }) {
 
 function TestimonialsSection() {
   const t = useTranslations("testimonials");
-  const items = t.raw("items") as Array<{
-    name: string;
-    location: string;
-    text: string;
-    service: string;
-  }>;
 
   return (
     <section className="section-y bg-navy relative overflow-hidden">
@@ -343,36 +338,7 @@ function TestimonialsSection() {
             ))}
           </div>
         </div>
-        {/* Mobile: horizontal snap strip (3 cards in ~one viewport height); md+: grid */}
-        <div className="flex md:grid md:grid-cols-3 gap-3 md:gap-5 overflow-x-auto pb-2 -mx-3 px-3 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-hide md:overflow-visible">
-          {items.map((item, i) => (
-            <div
-              key={i}
-              className="snap-center shrink-0 w-[82vw] min-[400px]:w-[72vw] sm:w-[60vw] md:w-auto md:min-w-0 bg-white/8 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-white/10 hover:bg-white/12 transition-colors duration-200 flex flex-col"
-            >
-              <svg className="w-6 h-6 sm:w-8 sm:h-8 text-gold/60 mb-2 sm:mb-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
-              <p className="text-white/85 text-xs sm:text-sm leading-snug sm:leading-relaxed mb-3 sm:mb-6 line-clamp-5 sm:line-clamp-none flex-1">{item.text}</p>
-              <div className="border-t border-white/10 pt-3 sm:pt-4 flex items-center gap-2 sm:gap-3 mt-auto">
-                <div className="w-10 h-10 bg-gold/30 rounded-full flex items-center justify-center shrink-0 ring-1 ring-gold/40">
-                  <span className="text-gold font-bold text-sm">{item.name[0]}</span>
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="font-semibold text-white text-xs sm:text-sm truncate">{item.name}</p>
-                  <p className="text-gold/80 text-[10px] sm:text-xs truncate">{item.location} · {item.service}</p>
-                </div>
-                <div className="ml-auto flex gap-0.5 shrink-0">
-                  {[...Array(5)].map((_, star) => (
-                    <svg key={star} className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-gold fill-gold shrink-0" viewBox="0 0 24 24">
-                      <path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <TestimonialsCarousel />
       </div>
     </section>
   );
@@ -440,7 +406,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </svg>
               </Link>
             </div>
-            {/* Stats — one row on mobile */}
+            {/* Stats - one row on mobile */}
             <div className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:gap-6 mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/10">
               {[
                 { value: "+500", label: locale === "ca" ? "Projectes" : locale === "en" ? "Projects" : "Proyectos" },
@@ -460,7 +426,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* Trust Bar */}
       <TrustBar />
 
-      {/* Services preview — before "why choose us" */}
+      {/* Services preview - before "why choose us" */}
       <ServicesPreview locale={locale as Locale} />
 
       {/* USPs */}

@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "ObraDirecta — Constructora en Barcelona",
+    default: "ObraDirecta - Constructora en Barcelona",
     template: "%s | ObraDirecta",
   },
   description:

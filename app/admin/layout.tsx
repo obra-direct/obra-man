@@ -4,7 +4,7 @@ import "../../app/globals.css";
 export const metadata: Metadata = {
   title: {
     default: "Admin | ObraDirecta",
-    template: "%s | Admin — ObraDirecta",
+    template: "%s | Admin - ObraDirecta",
   },
   robots: "noindex, nofollow",
 };

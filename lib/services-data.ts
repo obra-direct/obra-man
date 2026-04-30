@@ -810,9 +810,9 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       },
       {
         id: "ite-inspeccion-tecnica",
-        nameEs: "ITE — Inspección Técnica de Edificios",
-        nameCa: "ITE — Inspecció Tècnica d'Edificis",
-        nameEn: "ITE — Technical Building Inspection",
+        nameEs: "ITE - Inspección Técnica de Edificios",
+        nameCa: "ITE - Inspecció Tècnica d'Edificis",
+        nameEn: "ITE - Technical Building Inspection",
         descEs: "Realizamos la Inspección Técnica de Edificios (ITE) con informe técnico oficial para el Ayuntamiento.",
         descCa: "Realitzem la Inspecció Tècnica d'Edificis (ITE) amb informe tècnic oficial per a l'Ajuntament.",
         descEn: "We carry out the Technical Building Inspection (ITE) with an official technical report for the Council.",

@@ -12,9 +12,9 @@ export async function generateMetadata({
   const seo = await getSeoForPage("about", locale);
   if (!seo.title) {
     const titles: Record<string, string> = {
-      es: "Sobre Nosotros | ObraDirecta — Constructora Barcelona",
-      ca: "Sobre Nosaltres | ObraDirecta — Constructora Barcelona",
-      en: "About Us | ObraDirecta — Construction Company Barcelona",
+      es: "Sobre Nosotros | ObraDirecta - Constructora Barcelona",
+      ca: "Sobre Nosaltres | ObraDirecta - Constructora Barcelona",
+      en: "About Us | ObraDirecta - Construction Company Barcelona",
     };
     seo.title = titles[locale] || titles.es;
   }

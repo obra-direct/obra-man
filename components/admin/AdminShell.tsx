@@ -96,7 +96,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
           >
             <span className="text-base">{lang === "en" ? "🇬🇧" : "🇪🇸"}</span>
             <span className="text-gray-300 text-xs font-medium flex-1 text-left">
-              {lang === "en" ? "EN — Switch to ES" : "ES — Cambiar a EN"}
+              {lang === "en" ? "EN - Switch to ES" : "ES - Cambiar a EN"}
             </span>
             <span className="text-gray-500 text-xs">⇄</span>
           </button>

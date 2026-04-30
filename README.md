@@ -1,4 +1,4 @@
-# ObraDirecta — Construction Company Website
+# ObraDirecta - Construction Company Website
 
 Professional multilingual construction company website for Barcelona, Catalonia. Built with Next.js 14, TypeScript, Tailwind CSS, Prisma + SQLite, and next-intl for i18n (ES/CA/EN).
 
@@ -137,8 +137,8 @@ console.log('Password updated');
 | `/en/services/demolition` | EN | Demolition |
 | `/en/contact` | EN | Contact |
 | `/en/about` | EN | About |
-| `/sitemap.xml` | — | Auto-generated sitemap |
-| `/robots.txt` | — | Robots rules |
+| `/sitemap.xml` | - | Auto-generated sitemap |
+| `/robots.txt` | - | Robots rules |
 
 ---
 

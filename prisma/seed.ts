@@ -50,7 +50,7 @@ async function main() {
   const defaultPages = [
     {
       slug: "home",
-      title: "ObraDirecta — Constructora en Barcelona | Mejor Precio Garantizado",
+      title: "ObraDirecta - Constructora en Barcelona | Mejor Precio Garantizado",
       metaDescription:
         "Empresa constructora en Barcelona. +500 proyectos en Cataluña. Mejor precio garantizado, entrega rápida, calidad certificada. Presupuesto gratis en 24h.",
       h1: "Constructoras de Confianza en Barcelona",
@@ -66,14 +66,14 @@ async function main() {
     },
     {
       slug: "contact",
-      title: "Contacto | ObraDirecta — Constructora en Barcelona",
+      title: "Contacto | ObraDirecta - Constructora en Barcelona",
       metaDescription: "Contacta con ObraDirecta. Presupuesto gratis en 24 horas.",
       h1: "Contacto",
       robots: "index, follow",
     },
     {
       slug: "about",
-      title: "Sobre Nosotros | ObraDirecta — Constructora Barcelona",
+      title: "Sobre Nosotros | ObraDirecta - Constructora Barcelona",
       metaDescription: "Más de 15 años de experiencia en construcción en Barcelona y Cataluña.",
       h1: "Sobre Nosotros",
       robots: "index, follow",

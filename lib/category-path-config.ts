@@ -1,4 +1,4 @@
-/** Pathnames shared by middleware and category routes — IDs must exist in SERVICE_CATEGORIES. */
+/** Pathnames shared by middleware and category routes - IDs must exist in SERVICE_CATEGORIES. */
 export type CategoryPathRow = {
   categoryId: string;
   slugEs: string;
