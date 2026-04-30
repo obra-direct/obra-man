@@ -1,0 +1,152 @@
+{
+  "nav": {
+    "home": "Inici",
+    "services": "Serveis",
+    "contact": "Contacte",
+    "about": "Nosaltres",
+    "getQuote": "Pressupost gratis"
+  },
+  "hero": {
+    "headline": "Tot el que necessites per a la teva reforma",
+    "subheadline": "Des de petites reparacions fins a reformes integrals. Ho fem tot perquè no t'hagis de preocupar de res.",
+    "cta": "Sol·licitar Pressupost Gratis",
+    "ctaSecondary": "Veure Serveis"
+  },
+  "trust": {
+    "price": "Millor preu garantit",
+    "delivery": "Entrega més ràpida de Catalunya",
+    "quality": "Qualitat certificada",
+    "projects": "+500 projectes a Catalunya"
+  },
+  "usps": {
+    "title": "Per què triar-nos?",
+    "price": {
+      "title": "Millor preu del mercat",
+      "desc": "Garantim el preu més competitiu del mercat sense comprometre la qualitat."
+    },
+    "delivery": {
+      "title": "Entrega més ràpida de Catalunya",
+      "desc": "El nostre equip propi treballa sense subcontractes per lliurar el teu projecte a temps."
+    },
+    "quality": {
+      "title": "Qualitat certificada",
+      "desc": "Cada projecte passa per controls de qualitat rigorosos abans del lliurament."
+    },
+    "projects": {
+      "title": "+500 projectes completats",
+      "desc": "Més de 500 projectes a Barcelona i tota Catalunya avalen la nostra experiència."
+    },
+    "quote": {
+      "title": "Pressupost gratuït en 24h",
+      "desc": "Rebràs un pressupost detallat i sense compromís en menys de 24 hores."
+    },
+    "team": {
+      "title": "Equip propi, sense subcontractes",
+      "desc": "Tot el treball el realitza el nostre equip expert, garantint major control i qualitat."
+    }
+  },
+  "howWeWork": {
+    "title": "Com treballem",
+    "subtitle": "Un procés simple i transparent",
+    "intro": "Sense complicacions. T’acompanyem a cada pas.",
+    "steps": [
+      { "title": "Truca’ns", "desc": "Per telèfon o WhatsApp" },
+      { "title": "Visita gratuïta", "desc": "Anem a veure la feina." },
+      { "title": "Pressupost clar", "desc": "Sense lletra petita" },
+      { "title": "Planificació", "desc": "Dates i materials" },
+      { "title": "Comencem", "desc": "Puntuals i endreçats" },
+      { "title": "T’informem", "desc": "A cada pas del camí" },
+      { "title": "Lliurament", "desc": "Tot impecable" }
+    ]
+  },
+  "services": {
+    "title": "Els Nostres Serveis",
+    "subtitle": "Oferim més de 60 serveis de construcció i reforma a Barcelona i tota Catalunya",
+    "viewAll": "Veure tots els serveis",
+    "categories": {
+      "obra-nueva": "Obra Nova",
+      "reformas-integrales": "Reformes Integrals",
+      "fachadas-estructuras": "Façanes i Estructures",
+      "instalaciones": "Instal·lacions",
+      "acabados-interiores": "Acabats Interiors",
+      "banos-cocinas": "Banys i Cuines",
+      "urbanizacion-exterior": "Urbanització i Exterior",
+      "obras-civiles": "Obres Civils i Especials",
+      "demolicion-derribo": "Demolició i Enderroc"
+    }
+  },
+  "form": {
+    "title": "Sol·licita el teu Pressupost Gratis",
+    "subtitle": "Resposta en menys de 24 hores. Sense compromís.",
+    "name": "Nom complet",
+    "namePlaceholder": "El teu nom",
+    "phone": "Telèfon",
+    "phonePlaceholder": "6XX XXX XXX",
+    "service": "Servei d'interès",
+    "servicePlaceholder": "Selecciona un servei",
+    "message": "Missatge (opcional)",
+    "messagePlaceholder": "Explica'ns més sobre el teu projecte...",
+    "language": "Idioma preferit",
+    "gdpr": "Accepto la política de privacitat i el tractament de les meves dades personals per rebre informació sobre els serveis sol·licitats.",
+    "submit": "Enviar sol·licitud",
+    "submitting": "Enviant...",
+    "success": "Gràcies! Ens posarem en contacte amb tu en menys de 24 hores.",
+    "error": "S'ha produït un error. Torna-ho a intentar.",
+    "validation": {
+      "nameRequired": "El nom és obligatori",
+      "phoneRequired": "El telèfon és obligatori",
+      "phoneInvalid": "Introdueix un número de telèfon espanyol vàlid",
+      "serviceRequired": "Selecciona un servei",
+      "gdprRequired": "Has d'acceptar la política de privacitat"
+    }
+  },
+  "testimonials": {
+    "title": "El que diuen els nostres clients",
+    "items": [
+      {
+        "name": "Maria Garcia",
+        "location": "Barcelona",
+        "text": "Van reformar el nostre pis en temps rècord i amb una qualitat impecable. El preu va ser el millor que vam trobar al mercat. Totalment recomanats!",
+        "service": "Reforma integral de pis"
+      },
+      {
+        "name": "Carles Martínez",
+        "location": "Sabadell",
+        "text": "Van construir la nostra vivenda unifamiliar amb un seguiment personalitzat en cada etapa. Professionals de debò i compleixen el que prometen.",
+        "service": "Construcció de vivenda unifamiliar"
+      },
+      {
+        "name": "Anna Puig",
+        "location": "L'Hospitalet",
+        "text": "Van rehabilitar la façana del nostre edifici en menys temps del previst. Tracte excel·lent i resultat fantàstic. Repetiria sens dubte.",
+        "service": "Rehabilitació de façana"
+      }
+    ]
+  },
+  "footer": {
+    "address": "Barcelona, Catalunya, Espanya",
+    "phone": "+34 600 000 000",
+    "email": "info@obradirecta.cat",
+    "rights": "Tots els drets reservats",
+    "privacy": "Política de privacitat",
+    "legal": "Avís legal",
+    "links": "Enllaços"
+  },
+  "contact": {
+    "title": "Contacte",
+    "subtitle": "Estem aquí per ajudar-te. Contacta amb nosaltres i et respondrem en menys de 24 hores.",
+    "phone": "Telèfon",
+    "email": "Correu electrònic",
+    "address": "Adreça",
+    "hours": "Dilluns a Divendres, 8:00 - 18:00"
+  },
+  "about": {
+    "title": "Sobre Nosaltres",
+    "subtitle": "Som una empresa de construcció amb més de 15 anys d'experiència a Barcelona i tota Catalunya.",
+    "story": "Fundada a Barcelona, ObraDirecta és una empresa de construcció compromesa amb l'excel·lència, la transparència i la satisfacció del client. El nostre equip de més de 50 professionals qualificats treballa sense subcontractes per garantir el màxim control de qualitat en cada projecte.",
+    "mission": "La nostra missió és simple: oferir els millors projectes de construcció i reforma de Catalunya, amb el millor preu del mercat i en el menor temps possible.",
+    "team": "El Nostre Equip",
+    "values": "Els Nostres Valors"
+  },
+  "whatsapp": "Contacta'ns per WhatsApp"
+}

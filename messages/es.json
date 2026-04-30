@@ -1,0 +1,152 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "contact": "Contacto",
+    "about": "Nosotros",
+    "getQuote": "Presupuesto gratis"
+  },
+  "hero": {
+    "headline": "Todo lo que necesitas para tu reforma",
+    "subheadline": "Desde pequeñas reparaciones hasta reformas integrales. Lo hacemos todo para que no tengas que preocuparte de nada.",
+    "cta": "Solicitar Presupuesto Gratis",
+    "ctaSecondary": "Ver Servicios"
+  },
+  "trust": {
+    "price": "Mejor precio garantizado",
+    "delivery": "Entrega más rápida de Cataluña",
+    "quality": "Calidad certificada",
+    "projects": "+500 proyectos en Cataluña"
+  },
+  "usps": {
+    "title": "¿Por qué elegirnos?",
+    "price": {
+      "title": "Mejor precio del mercado",
+      "desc": "Garantizamos el precio más competitivo del mercado sin comprometer la calidad."
+    },
+    "delivery": {
+      "title": "Entrega más rápida de Cataluña",
+      "desc": "Nuestro equipo propio trabaja sin subcontratas para entregar tu proyecto a tiempo."
+    },
+    "quality": {
+      "title": "Calidad certificada",
+      "desc": "Cada proyecto pasa por controles de calidad rigurosos antes de la entrega."
+    },
+    "projects": {
+      "title": "+500 proyectos completados",
+      "desc": "Más de 500 proyectos en Barcelona y toda Cataluña avalan nuestra experiencia."
+    },
+    "quote": {
+      "title": "Presupuesto gratuito en 24h",
+      "desc": "Recibirás un presupuesto detallado y sin compromiso en menos de 24 horas."
+    },
+    "team": {
+      "title": "Equipo propio, sin subcontratas",
+      "desc": "Todo el trabajo lo realiza nuestro equipo experto, garantizando mayor control y calidad."
+    }
+  },
+  "howWeWork": {
+    "title": "Cómo trabajamos",
+    "subtitle": "Un proceso sencillo y transparente",
+    "intro": "Sin complicaciones. Te acompañamos en cada paso.",
+    "steps": [
+      { "title": "Nos llamas", "desc": "Por teléfono o WhatsApp" },
+      { "title": "Visita gratuita", "desc": "Vamos a ver la obra." },
+      { "title": "Presupuesto claro", "desc": "Sin letra pequeña" },
+      { "title": "Planificación", "desc": "Fechas y materiales" },
+      { "title": "Empezamos", "desc": "Puntuales y ordenados" },
+      { "title": "Te mantenemos informado", "desc": "En cada fase del trabajo" },
+      { "title": "Entrega", "desc": "Todo impecable" }
+    ]
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "subtitle": "Ofrecemos más de 60 servicios de construcción y reforma en Barcelona y toda Cataluña",
+    "viewAll": "Ver todos los servicios",
+    "categories": {
+      "obra-nueva": "Obra Nueva",
+      "reformas-integrales": "Reformas Integrales",
+      "fachadas-estructuras": "Fachadas y Estructuras",
+      "instalaciones": "Instalaciones",
+      "acabados-interiores": "Acabados Interiores",
+      "banos-cocinas": "Baños y Cocinas",
+      "urbanizacion-exterior": "Urbanización y Exterior",
+      "obras-civiles": "Obras Civiles y Especiales",
+      "demolicion-derribo": "Demolición y Derribo"
+    }
+  },
+  "form": {
+    "title": "Solicita tu Presupuesto Gratis",
+    "subtitle": "Respuesta en menos de 24 horas. Sin compromiso.",
+    "name": "Nombre completo",
+    "namePlaceholder": "Tu nombre",
+    "phone": "Teléfono",
+    "phonePlaceholder": "6XX XXX XXX",
+    "service": "Servicio de interés",
+    "servicePlaceholder": "Selecciona un servicio",
+    "message": "Mensaje (opcional)",
+    "messagePlaceholder": "Cuéntanos más sobre tu proyecto...",
+    "language": "Idioma preferido",
+    "gdpr": "Acepto la política de privacidad y el tratamiento de mis datos personales para recibir información sobre los servicios solicitados.",
+    "submit": "Enviar solicitud",
+    "submitting": "Enviando...",
+    "success": "¡Gracias! Nos pondremos en contacto contigo en menos de 24 horas.",
+    "error": "Ha ocurrido un error. Por favor, inténtalo de nuevo.",
+    "validation": {
+      "nameRequired": "El nombre es obligatorio",
+      "phoneRequired": "El teléfono es obligatorio",
+      "phoneInvalid": "Introduce un número de teléfono español válido",
+      "serviceRequired": "Selecciona un servicio",
+      "gdprRequired": "Debes aceptar la política de privacidad"
+    }
+  },
+  "testimonials": {
+    "title": "Lo que dicen nuestros clientes",
+    "items": [
+      {
+        "name": "María García",
+        "location": "Barcelona",
+        "text": "Reformaron nuestro piso en tiempo récord y con una calidad impecable. El precio fue el mejor que encontramos en el mercado. ¡Totalmente recomendados!",
+        "service": "Reforma integral de piso"
+      },
+      {
+        "name": "Carlos Martínez",
+        "location": "Sabadell",
+        "text": "Construyeron nuestra vivienda unifamiliar con un seguimiento personalizado en cada etapa. Profesionales de verdad y cumplen lo que prometen.",
+        "service": "Construcción de vivienda unifamiliar"
+      },
+      {
+        "name": "Anna Puig",
+        "location": "L'Hospitalet",
+        "text": "Rehabilitaron la fachada de nuestro edificio en menos tiempo del previsto. Trato excelente y resultado fantástico. Repetiría sin duda.",
+        "service": "Rehabilitación de fachada"
+      }
+    ]
+  },
+  "footer": {
+    "address": "Barcelona, Cataluña, España",
+    "phone": "+34 600 000 000",
+    "email": "info@obradirecta.cat",
+    "rights": "Todos los derechos reservados",
+    "privacy": "Política de privacidad",
+    "legal": "Aviso legal",
+    "links": "Enlaces"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Estamos aquí para ayudarte. Contacta con nosotros y te responderemos en menos de 24 horas.",
+    "phone": "Teléfono",
+    "email": "Email",
+    "address": "Dirección",
+    "hours": "Lunes a Viernes, 8:00 - 18:00"
+  },
+  "about": {
+    "title": "Sobre Nosotros",
+    "subtitle": "Somos una empresa de construcción con más de 15 años de experiencia en Barcelona y toda Cataluña.",
+    "story": "Fundada en Barcelona, ObraDirecta es una empresa de construcción comprometida con la excelencia, la transparencia y la satisfacción del cliente. Nuestro equipo de más de 50 profesionales cualificados trabaja sin subcontratas para garantizar el máximo control de calidad en cada proyecto.",
+    "mission": "Nuestra misión es simple: ofrecer los mejores proyectos de construcción y reforma de Cataluña, con el mejor precio del mercado y en el menor tiempo posible.",
+    "team": "Nuestro Equipo",
+    "values": "Nuestros Valores"
+  },
+  "whatsapp": "Contáctanos por WhatsApp"
+}

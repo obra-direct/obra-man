@@ -1,0 +1,152 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "contact": "Contact",
+    "about": "About",
+    "getQuote": "Free Quote"
+  },
+  "hero": {
+    "headline": "Everything you need for your renovation",
+    "subheadline": "From small repairs to comprehensive renovations. We do it all so you don't have to worry about anything.",
+    "cta": "Get a Free Quote",
+    "ctaSecondary": "View Services"
+  },
+  "trust": {
+    "price": "Best price guaranteed",
+    "delivery": "Fastest delivery in Catalonia",
+    "quality": "Certified quality",
+    "projects": "+500 projects in Catalonia"
+  },
+  "usps": {
+    "title": "Why choose us?",
+    "price": {
+      "title": "Best market price",
+      "desc": "We guarantee the most competitive price without compromising quality."
+    },
+    "delivery": {
+      "title": "Fastest delivery in Catalonia",
+      "desc": "Our in-house team works without subcontractors to deliver your project on time."
+    },
+    "quality": {
+      "title": "Certified quality",
+      "desc": "Every project undergoes rigorous quality controls before handover."
+    },
+    "projects": {
+      "title": "+500 completed projects",
+      "desc": "Over 500 projects in Barcelona and all of Catalonia back our experience."
+    },
+    "quote": {
+      "title": "Free quote in 24h",
+      "desc": "You will receive a detailed, no-obligation quote in under 24 hours."
+    },
+    "team": {
+      "title": "In-house team, no subcontractors",
+      "desc": "All work is carried out by our expert team, guaranteeing greater control and quality."
+    }
+  },
+  "howWeWork": {
+    "title": "How We Work",
+    "subtitle": "A simple and transparent process",
+    "intro": "No complications. We accompany you every step of the way.",
+    "steps": [
+      { "title": "You call us", "desc": "By phone or WhatsApp" },
+      { "title": "Free visit", "desc": "Let's go see the work." },
+      { "title": "Clear budget", "desc": "No small print." },
+      { "title": "Let's plan", "desc": "Dates and materials." },
+      { "title": "Let's begin", "desc": "Punctual and orderly." },
+      { "title": "We inform you", "desc": "Every step of the way." },
+      { "title": "Delivery", "desc": "Everything impeccable." }
+    ]
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "We offer over 60 construction and renovation services in Barcelona and all of Catalonia",
+    "viewAll": "View all services",
+    "categories": {
+      "obra-nueva": "New Build",
+      "reformas-integrales": "Full Renovations",
+      "fachadas-estructuras": "Facades & Structures",
+      "instalaciones": "Installations",
+      "acabados-interiores": "Interior Finishes",
+      "banos-cocinas": "Bathrooms & Kitchens",
+      "urbanizacion-exterior": "Landscaping & Exterior",
+      "obras-civiles": "Civil & Special Works",
+      "demolicion-derribo": "Demolition & Removal"
+    }
+  },
+  "form": {
+    "title": "Get Your Free Quote",
+    "subtitle": "Response in under 24 hours. No obligation.",
+    "name": "Full name",
+    "namePlaceholder": "Your name",
+    "phone": "Phone",
+    "phonePlaceholder": "6XX XXX XXX",
+    "service": "Service of interest",
+    "servicePlaceholder": "Select a service",
+    "message": "Message (optional)",
+    "messagePlaceholder": "Tell us more about your project...",
+    "language": "Preferred language",
+    "gdpr": "I accept the privacy policy and the processing of my personal data to receive information about the requested services.",
+    "submit": "Send request",
+    "submitting": "Sending...",
+    "success": "Thank you! We will get in touch with you within 24 hours.",
+    "error": "An error occurred. Please try again.",
+    "validation": {
+      "nameRequired": "Name is required",
+      "phoneRequired": "Phone number is required",
+      "phoneInvalid": "Please enter a valid Spanish phone number",
+      "serviceRequired": "Please select a service",
+      "gdprRequired": "You must accept the privacy policy"
+    }
+  },
+  "testimonials": {
+    "title": "What our clients say",
+    "items": [
+      {
+        "name": "María García",
+        "location": "Barcelona",
+        "text": "They renovated our flat in record time and with impeccable quality. The price was the best we found on the market. Highly recommended!",
+        "service": "Full flat renovation"
+      },
+      {
+        "name": "Carlos Martínez",
+        "location": "Sabadell",
+        "text": "They built our family home with personalised attention at every stage. True professionals who deliver on their promises.",
+        "service": "Single-family home construction"
+      },
+      {
+        "name": "Anna Puig",
+        "location": "L'Hospitalet",
+        "text": "They rehabilitated our building's facade in less time than expected. Excellent service and fantastic result. Would use them again without hesitation.",
+        "service": "Facade rehabilitation"
+      }
+    ]
+  },
+  "footer": {
+    "address": "Barcelona, Catalonia, Spain",
+    "phone": "+34 600 000 000",
+    "email": "info@obradirecta.cat",
+    "rights": "All rights reserved",
+    "privacy": "Privacy policy",
+    "legal": "Legal notice",
+    "links": "Links"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "We are here to help. Contact us and we will respond in under 24 hours.",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "hours": "Monday to Friday, 8:00 - 18:00"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "We are a construction company with over 15 years of experience in Barcelona and all of Catalonia.",
+    "story": "Founded in Barcelona, ObraDirecta is a construction company committed to excellence, transparency and client satisfaction. Our team of over 50 qualified professionals works without subcontractors to guarantee maximum quality control on every project.",
+    "mission": "Our mission is simple: to deliver the best construction and renovation projects in Catalonia, at the best market price and in the shortest possible time.",
+    "team": "Our Team",
+    "values": "Our Values"
+  },
+  "whatsapp": "Contact us on WhatsApp"
+}

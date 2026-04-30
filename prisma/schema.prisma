@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Lead {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String
+  service   String
+  message   String?
+  language  String   @default("es")
+  status    String   @default("new")
+  createdAt DateTime @default(now())
+}
+
+model SeoPage {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  title           String?
+  metaDescription String?
+  ogTitle         String?
+  ogDescription   String?
+  focusKeyword    String?
+  canonical       String?
+  robots          String?  @default("index, follow")
+  h1              String?
+  updatedAt       DateTime @updatedAt
+}
+
+model SeoGlobal {
+  id               String  @id @default(cuid())
+  ga4Id            String?
+  schemaName       String? @default("Obra Man")
+  schemaAddress    String? @default("Barcelona, Cataluña, España")
+  schemaPhone      String?
+  schemaLat        String? @default("41.3851")
+  schemaLng        String? @default("2.1734")
+  schemaHours      String? @default("Mo-Fr 08:00-18:00")
+  schemaPriceRange String? @default("€€")
+  sitemapEnabled   Boolean @default(true)
+}
+
+model AdminUser {
+  id           String @id @default(cuid())
+  username     String @unique
+  passwordHash String
+}
+
+model SiteSettings {
+  id           String   @id @default(cuid())
+  heroImageUrl String?
+  updatedAt    DateTime @updatedAt
+}
+
+model SiteContacts {
+  id        String   @id @default(cuid())
+  phone     String?
+  whatsapp  String?
+  email     String?
+  address   String?
+  facebook  String?
+  instagram String?
+  updatedAt DateTime @updatedAt
+}
+
+model Service {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  category    String
+  nameEs      String
+  nameCa      String
+  nameEn      String
+  descEs      String?
+  descCa      String?
+  descEn      String?
+  visible     Boolean @default(true)
+  sortOrder   Int     @default(0)
+}
