@@ -60,7 +60,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         </div>
       </section>
 
-      {/* Category Navigation — mobile grid */}
+      {/* Category Navigation - mobile grid */}
       <div className="md:hidden bg-white border-b border-gray-100">
         <div className="container-custom py-4">
           <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-3 px-0.5">
@@ -88,7 +88,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         </div>
       </div>
 
-      {/* Category Navigation — desktop sticky scroll bar */}
+      {/* Category Navigation - desktop sticky scroll bar */}
       <div className="hidden md:block bg-white border-b border-gray-100 sticky top-16 z-40 shadow-sm">
         <div className="container-custom">
           <div className="flex gap-2 overflow-x-auto py-3 scrollbar-hide">
@@ -146,7 +146,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                   {cat.services.map((svc) => (
-                    <ServiceCard key={svc.id} service={svc} locale={locale as Locale} />
+                    <ServiceCard key={svc.id} service={svc} locale={locale as Locale} categoryId={cat.id} />
                   ))}
                 </div>
               </section>

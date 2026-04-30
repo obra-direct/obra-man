@@ -135,7 +135,7 @@ export default async function ServiceCategoryPage({
         <div className="container-custom">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {category.services.map((svc) => (
-              <ServiceCard key={svc.id} service={svc} locale={locale as Locale} />
+              <ServiceCard key={svc.id} service={svc} locale={locale as Locale} categoryId={category.id} />
             ))}
           </div>
         </div>

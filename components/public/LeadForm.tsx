@@ -19,7 +19,6 @@ function buildSchema(t: ReturnType<typeof useTranslations>) {
       .regex(SPANISH_PHONE_REGEX, t("form.validation.phoneInvalid")),
     service: z.string().optional(),
     message: z.string().optional(),
-    language: z.string(),
     gdpr: z.boolean().refine((v) => v === true, { message: t("form.validation.gdprRequired") }),
   });
 }
@@ -29,26 +28,29 @@ type FormValues = {
   phone: string;
   service?: string;
   message?: string;
-  language: string;
   gdpr: boolean;
 };
 
 export default function LeadForm({
   locale,
   presetCategoryId,
+  presetServiceId: presetServiceIdProp,
 }: {
   locale: Locale;
   /** Pre-selects first service within this category in the dropdown. */
   presetCategoryId?: string;
+  /** Pre-selects a specific service ID in the dropdown (takes priority over presetCategoryId). */
+  presetServiceId?: string;
 }) {
   const t = useTranslations();
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const presetServiceId = useMemo(() => {
+    if (presetServiceIdProp) return presetServiceIdProp;
     if (!presetCategoryId) return "";
     const cat = SERVICE_CATEGORIES.find((c) => c.id === presetCategoryId);
     return cat?.services[0]?.id ?? "";
-  }, [presetCategoryId]);
+  }, [presetServiceIdProp, presetCategoryId]);
 
   const schema = buildSchema(t);
 
@@ -64,7 +66,6 @@ export default function LeadForm({
       phone: "",
       service: presetServiceId,
       message: "",
-      language: locale,
       gdpr: false,
     },
   });
@@ -75,7 +76,7 @@ export default function LeadForm({
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, language: locale }),
       });
       if (!res.ok) throw new Error("Request failed");
       setStatus("success");
@@ -201,22 +202,6 @@ export default function LeadForm({
           {...register("message")}
           className="form-input resize-none"
         />
-      </div>
-
-      {/* Language preference */}
-      <div>
-        <label htmlFor="lead-language" className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">
-          {t("form.language")}
-        </label>
-        <select
-          id="lead-language"
-          {...register("language")}
-          className="form-input"
-        >
-          <option value="es">Español</option>
-          <option value="ca">Català</option>
-          <option value="en">English</option>
-        </select>
       </div>
 
       {/* GDPR */}

@@ -1,6 +1,7 @@
 import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { CATEGORY_PATH_ROWS } from "./lib/category-path-config";
+import { SERVICE_CATEGORIES } from "./lib/services-data";
 import { locales, defaultLocale } from "./i18n";
 
 const serviceCategoryPathnames = Object.fromEntries(
@@ -12,6 +13,21 @@ const serviceCategoryPathnames = Object.fromEntries(
       en: `/services/${row.slugEn}`,
     },
   ])
+);
+
+const serviceDetailPathnames = Object.fromEntries(
+  CATEGORY_PATH_ROWS.flatMap((row) => {
+    const cat = SERVICE_CATEGORIES.find((c) => c.id === row.categoryId);
+    if (!cat) return [];
+    return cat.services.map((svc) => [
+      `/servicios/${row.slugEs}/${svc.id}`,
+      {
+        es: `/servicios/${row.slugEs}/${svc.id}`,
+        ca: `/serveis/${row.slugCa}/${svc.id}`,
+        en: `/services/${row.slugEn}/${svc.id}`,
+      },
+    ]);
+  })
 );
 
 const intlMiddleware = createMiddleware({
@@ -27,6 +43,7 @@ const intlMiddleware = createMiddleware({
       en: "/services",
     },
     ...serviceCategoryPathnames,
+    ...serviceDetailPathnames,
     "/contacto": {
       es: "/contacto",
       ca: "/contacte",

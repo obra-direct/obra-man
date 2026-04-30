@@ -6,9 +6,8 @@ import { prisma } from "@/lib/db";
 import AdminShell from "@/components/admin/AdminShell";
 import SeoManager from "@/components/admin/SeoManager";
 import type { Metadata } from "next";
-import { CATEGORY_ROUTE_DEFS } from "@/lib/service-category-routes";
+import { CATEGORY_ROUTE_DEFS, seoSlugForCategory, seoSlugForService } from "@/lib/service-category-routes";
 import { SERVICE_CATEGORIES } from "@/lib/services-data";
-import { seoSlugForCategory } from "@/lib/service-category-routes";
 
 export const metadata: Metadata = { title: "SEO" };
 
@@ -20,7 +19,7 @@ const PAGE_SLUGS = [
   { slug: "about",    labelEs: "Sobre Nosotros",   labelEn: "About Us" },
 ];
 
-/** Service category pages — generated from the route config so it stays in sync */
+/** Service category pages - generated from the route config so it stays in sync */
 const CATEGORY_SLUGS = CATEGORY_ROUTE_DEFS.map((route) => {
   const cat = SERVICE_CATEGORIES.find((c) => c.id === route.categoryId);
   return {
@@ -30,22 +29,31 @@ const CATEGORY_SLUGS = CATEGORY_ROUTE_DEFS.map((route) => {
   };
 });
 
+/** Individual service pages */
+const SERVICE_SLUGS = SERVICE_CATEGORIES.flatMap((cat) =>
+  cat.services.map((svc) => ({
+    slug: seoSlugForService(svc.id),
+    labelEs: `${cat.nameEs} › ${svc.nameEs}`,
+    labelEn: `${cat.nameEn} › ${svc.nameEn}`,
+  }))
+);
+
 /** Fallback SEO values the public pages show when no DB record exists.
  *  Pre-fills the admin form so users see and can edit the actual current values. */
 const STATIC_DEFAULT_SEO: Record<string, Record<string, { title?: string; metaDescription?: string; h1?: string }>> = {
   home: {
     es: {
-      title: "ObraDirecta — Constructora en Barcelona | Mejor Precio Garantizado",
+      title: "ObraDirecta - Constructora en Barcelona | Mejor Precio Garantizado",
       metaDescription: "Empresa constructora en Barcelona. +500 proyectos en Cataluña. Mejor precio garantizado, entrega rápida, calidad certificada. Presupuesto gratis en 24h.",
       h1: "Constructoras de Confianza en Barcelona",
     },
     ca: {
-      title: "ObraDirecta — Constructora a Barcelona | Millor Preu Garantit",
+      title: "ObraDirecta - Constructora a Barcelona | Millor Preu Garantit",
       metaDescription: "Empresa constructora a Barcelona. +500 projectes a Catalunya. Millor preu garantit, entrega ràpida, qualitat certificada. Pressupost gratis en 24h.",
       h1: "Constructores de Confiança a Barcelona",
     },
     en: {
-      title: "ObraDirecta — Construction Company Barcelona | Best Price Guaranteed",
+      title: "ObraDirecta - Construction Company Barcelona | Best Price Guaranteed",
       metaDescription: "Construction company in Barcelona. +500 projects in Catalonia. Best price guaranteed, fast delivery, certified quality. Free quote in 24h.",
       h1: "Trusted Construction Company in Barcelona",
     },
@@ -69,34 +77,34 @@ const STATIC_DEFAULT_SEO: Record<string, Record<string, { title?: string; metaDe
   },
   contact: {
     es: {
-      title: "Contacto | ObraDirecta — Constructora en Barcelona",
+      title: "Contacto | ObraDirecta - Constructora en Barcelona",
       metaDescription: "Contacta con ObraDirecta. Presupuesto gratis en 24 horas.",
       h1: "Contacto",
     },
     ca: {
-      title: "Contacte | ObraDirecta — Constructora a Barcelona",
+      title: "Contacte | ObraDirecta - Constructora a Barcelona",
       metaDescription: "Contacta amb ObraDirecta. Pressupost gratuït en 24 hores.",
       h1: "Contacte",
     },
     en: {
-      title: "Contact | ObraDirecta — Construction Company Barcelona",
+      title: "Contact | ObraDirecta - Construction Company Barcelona",
       metaDescription: "Contact ObraDirecta. Free quote in 24 hours.",
       h1: "Contact",
     },
   },
   about: {
     es: {
-      title: "Sobre Nosotros | ObraDirecta — Constructora Barcelona",
+      title: "Sobre Nosotros | ObraDirecta - Constructora Barcelona",
       metaDescription: "Más de 15 años de experiencia en construcción en Barcelona y Cataluña.",
       h1: "Sobre Nosotros",
     },
     ca: {
-      title: "Sobre Nosaltres | ObraDirecta — Constructora Barcelona",
+      title: "Sobre Nosaltres | ObraDirecta - Constructora Barcelona",
       metaDescription: "Més de 15 anys d'experiència en construcció a Barcelona i Catalunya.",
       h1: "Sobre Nosaltres",
     },
     en: {
-      title: "About Us | ObraDirecta — Construction Company Barcelona",
+      title: "About Us | ObraDirecta - Construction Company Barcelona",
       metaDescription: "Over 15 years of construction experience in Barcelona and Catalonia.",
       h1: "About Us",
     },
@@ -159,6 +167,7 @@ export default async function SeoAdminPage() {
         <SeoManager
           pageSlugs={PAGE_SLUGS}
           categorySlugs={CATEGORY_SLUGS}
+          serviceSlugs={SERVICE_SLUGS}
           initialPages={seoPages}
           initialGlobal={seoGlobal}
           defaultSeo={defaultSeo}

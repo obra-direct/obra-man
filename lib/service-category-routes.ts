@@ -47,3 +47,21 @@ export function servicesIndexHref(locale: Locale): string {
   if (locale === "ca") return "/ca/serveis";
   return "/en/services";
 }
+
+export function serviceHref(
+  locale: Locale,
+  categoryId: string,
+  serviceId: string
+): string {
+  const route = getCategoryRouteDefByCategoryId(categoryId);
+  if (!route) return servicesIndexHref(locale);
+  const catSlug =
+    locale === "ca" ? route.slugCa : locale === "en" ? route.slugEn : route.slugEs;
+  if (locale === "es") return `/servicios/${catSlug}/${serviceId}`;
+  if (locale === "ca") return `/ca/serveis/${catSlug}/${serviceId}`;
+  return `/en/services/${catSlug}/${serviceId}`;
+}
+
+export function seoSlugForService(serviceId: string): string {
+  return `service-${serviceId}`;
+}
