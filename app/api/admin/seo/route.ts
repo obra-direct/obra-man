@@ -8,7 +8,7 @@ export async function GET() {
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const [pages, global] = await Promise.all([
-    prisma.seoPage.findMany({ orderBy: { slug: "asc" } }),
+    prisma.seoPage.findMany({ orderBy: [{ slug: "asc" }, { locale: "asc" }] }),
     prisma.seoGlobal.findFirst(),
   ]);
 
@@ -22,11 +22,11 @@ export async function PUT(req: NextRequest) {
   const body = await req.json();
 
   if (body.type === "page") {
-    const { slug, ...data } = body.data;
+    const { slug, locale = "es", ...data } = body.data;
     const page = await prisma.seoPage.upsert({
-      where: { slug },
+      where: { slug_locale: { slug, locale } },
       update: data,
-      create: { slug, ...data },
+      create: { slug, locale, ...data },
     });
     return NextResponse.json(page);
   }

@@ -5,6 +5,7 @@ import { useState } from "react";
 type SeoPage = {
   id: string;
   slug: string;
+  locale: string;
   title: string | null;
   metaDescription: string | null;
   ogTitle: string | null;
@@ -28,17 +29,32 @@ type SeoGlobal = {
   sitemapEnabled: boolean;
 } | null;
 
-type PageSlugConfig = { slug: string; labelEs: string };
+type PageSlugConfig = { slug: string; labelEs: string; labelEn: string };
+type DefaultSeoEntry = { title?: string; metaDescription?: string; h1?: string };
+type DefaultSeoMap = Record<string, Record<string, DefaultSeoEntry>>;
 
-function SeoPageForm({
-  slugConfig,
+const LOCALES = [
+  { code: "es", flag: "🇪🇸", label: "Español" },
+  { code: "ca", flag: "🏴", label: "Català" },
+  { code: "en", flag: "🇬🇧", label: "English" },
+];
+
+function SeoPageLocaleForm({
+  slug,
+  locale,
   initialData,
+  defaultEntry,
+  adminLang,
 }: {
-  slugConfig: PageSlugConfig;
+  slug: string;
+  locale: string;
   initialData: SeoPage | undefined;
+  defaultEntry?: DefaultSeoEntry;
+  adminLang: "es" | "en";
 }) {
+  const isNew = !initialData;
   const [data, setData] = useState<Partial<SeoPage>>(
-    initialData || { slug: slugConfig.slug }
+    initialData || { slug, locale, ...defaultEntry }
   );
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -53,7 +69,7 @@ function SeoPageForm({
     const res = await fetch("/api/admin/seo", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ type: "page", data: { slug: slugConfig.slug, ...data } }),
+      body: JSON.stringify({ type: "page", data: { slug, locale, ...data } }),
     });
     setSaving(false);
     if (res.ok) setSaved(true);
@@ -62,31 +78,62 @@ function SeoPageForm({
   const inputClass =
     "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent";
 
+  const t = {
+    titleTag: adminLang === "en" ? "Title Tag" : "Title Tag",
+    h1Heading: adminLang === "en" ? "H1 Heading" : "Encabezado H1",
+    metaDesc: adminLang === "en" ? "Meta Description" : "Meta Descripción",
+    ogTitle: adminLang === "en" ? "OG Title" : "OG Título",
+    ogDesc: adminLang === "en" ? "OG Description" : "OG Descripción",
+    focusKw: adminLang === "en" ? "Focus Keyword" : "Palabra Clave",
+    canonical: adminLang === "en" ? "Canonical URL" : "URL Canónica",
+    robots: adminLang === "en" ? "Robots" : "Robots",
+    titleHint: adminLang === "en" ? "recommended characters" : "caracteres recomendados",
+    descHint: adminLang === "en" ? "recommended characters" : "caracteres recomendados",
+    save: adminLang === "en" ? "Save changes" : "Guardar cambios",
+    saving: adminLang === "en" ? "Saving..." : "Guardando...",
+    savedOk: adminLang === "en" ? "✓ Saved successfully" : "✓ Guardado correctamente",
+    titlePlaceholder: adminLang === "en" ? "Page title | ObraDirecta" : "Título de la página | ObraDirecta",
+    h1Placeholder: adminLang === "en" ? "Main heading" : "Encabezado principal",
+    metaPlaceholder: adminLang === "en" ? "Description for search engines..." : "Descripción para los buscadores...",
+    ogTitlePlaceholder: adminLang === "en" ? "Title for social networks" : "Título para redes sociales",
+    ogDescPlaceholder: adminLang === "en" ? "Description for social networks" : "Descripción para redes sociales",
+  };
+
   return (
     <div className="space-y-4">
+      {isNew && (
+        <div className="flex items-start gap-2 p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-800">
+          <span>⚠️</span>
+          <span>
+            {adminLang === "en"
+              ? "These are the current default values that Google sees. Edit and save to store them in the database."
+              : "Estos son los valores por defecto actuales que ve Google. Edita y guarda para almacenarlos en la base de datos."}
+          </span>
+        </div>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-            Title Tag
+            {t.titleTag}
           </label>
           <input
             type="text"
             value={data.title || ""}
             onChange={(e) => set("title", e.target.value)}
-            placeholder="Título de la página | ObraDirecta"
+            placeholder={t.titlePlaceholder}
             className={inputClass}
           />
-          <p className="text-xs text-gray-400 mt-1">{(data.title || "").length}/60 caracteres recomendados</p>
+          <p className="text-xs text-gray-400 mt-1">{(data.title || "").length}/60 {t.titleHint}</p>
         </div>
         <div>
           <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-            H1 Heading
+            {t.h1Heading}
           </label>
           <input
             type="text"
             value={data.h1 || ""}
             onChange={(e) => set("h1", e.target.value)}
-            placeholder="Encabezado principal"
+            placeholder={t.h1Placeholder}
             className={inputClass}
           />
         </div>
@@ -94,40 +141,40 @@ function SeoPageForm({
 
       <div>
         <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-          Meta Description
+          {t.metaDesc}
         </label>
         <textarea
           value={data.metaDescription || ""}
           onChange={(e) => set("metaDescription", e.target.value)}
-          placeholder="Descripción para los buscadores..."
+          placeholder={t.metaPlaceholder}
           rows={2}
           className={`${inputClass} resize-none`}
         />
-        <p className="text-xs text-gray-400 mt-1">{(data.metaDescription || "").length}/160 caracteres recomendados</p>
+        <p className="text-xs text-gray-400 mt-1">{(data.metaDescription || "").length}/160 {t.descHint}</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-            OG Title
+            {t.ogTitle}
           </label>
           <input
             type="text"
             value={data.ogTitle || ""}
             onChange={(e) => set("ogTitle", e.target.value)}
-            placeholder="Título para redes sociales"
+            placeholder={t.ogTitlePlaceholder}
             className={inputClass}
           />
         </div>
         <div>
           <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-            OG Description
+            {t.ogDesc}
           </label>
           <input
             type="text"
             value={data.ogDescription || ""}
             onChange={(e) => set("ogDescription", e.target.value)}
-            placeholder="Descripción para redes sociales"
+            placeholder={t.ogDescPlaceholder}
             className={inputClass}
           />
         </div>
@@ -136,7 +183,7 @@ function SeoPageForm({
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
           <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-            Focus Keyword
+            {t.focusKw}
           </label>
           <input
             type="text"
@@ -148,7 +195,7 @@ function SeoPageForm({
         </div>
         <div>
           <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-            Canonical URL
+            {t.canonical}
           </label>
           <input
             type="url"
@@ -160,7 +207,7 @@ function SeoPageForm({
         </div>
         <div>
           <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-            Robots
+            {t.robots}
           </label>
           <select
             value={data.robots || "index, follow"}
@@ -181,17 +228,78 @@ function SeoPageForm({
           disabled={saving}
           className="bg-gold hover:bg-gold-dark text-navy font-semibold px-6 py-2.5 rounded-lg text-sm transition-colors disabled:opacity-60"
         >
-          {saving ? "Guardando..." : "Guardar cambios"}
+          {saving ? t.saving : t.save}
         </button>
         {saved && (
-          <span className="text-green-600 text-sm font-medium">✓ Guardado correctamente</span>
+          <span className="text-green-600 text-sm font-medium">{t.savedOk}</span>
         )}
       </div>
     </div>
   );
 }
 
-function GlobalSeoForm({ initialGlobal }: { initialGlobal: SeoGlobal }) {
+function SeoPageForm({
+  slugConfig,
+  pagesMap,
+  defaultSeo,
+  adminLang,
+}: {
+  slugConfig: PageSlugConfig;
+  pagesMap: Record<string, SeoPage>;
+  defaultSeo?: DefaultSeoMap;
+  adminLang: "es" | "en";
+}) {
+  const [activeLocale, setActiveLocale] = useState("es");
+
+  return (
+    <div className="space-y-4">
+      {/* Locale sub-tabs */}
+      <div className="flex gap-1 p-1 bg-gray-100 rounded-lg w-fit">
+        {LOCALES.map((loc) => (
+          <button
+            key={loc.code}
+            onClick={() => setActiveLocale(loc.code)}
+            className={`flex items-center gap-1.5 px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${
+              activeLocale === loc.code
+                ? "bg-white text-navy shadow-sm"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            <span>{loc.flag}</span>
+            <span>{loc.label}</span>
+          </button>
+        ))}
+      </div>
+
+      {/* Info banner */}
+      <div className="flex items-start gap-2 p-3 bg-blue-50 border border-blue-100 rounded-lg text-xs text-blue-700">
+        <span>ℹ️</span>
+        <span>
+          {adminLang === "en"
+            ? "Each language version is a separate URL for Google. Changes here only affect the selected language."
+            : "Cada versión de idioma es una URL separada para Google. Los cambios aquí solo afectan al idioma seleccionado."}
+        </span>
+      </div>
+
+      <SeoPageLocaleForm
+        key={`${slugConfig.slug}-${activeLocale}`}
+        slug={slugConfig.slug}
+        locale={activeLocale}
+        initialData={pagesMap[`${slugConfig.slug}__${activeLocale}`]}
+        defaultEntry={defaultSeo?.[slugConfig.slug]?.[activeLocale]}
+        adminLang={adminLang}
+      />
+    </div>
+  );
+}
+
+function GlobalSeoForm({
+  initialGlobal,
+  adminLang,
+}: {
+  initialGlobal: SeoGlobal;
+  adminLang: "es" | "en";
+}) {
   const [data, setData] = useState(
     initialGlobal || {
       ga4Id: "",
@@ -227,6 +335,8 @@ function GlobalSeoForm({ initialGlobal }: { initialGlobal: SeoGlobal }) {
   const inputClass =
     "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent";
 
+  const en = adminLang === "en";
+
   return (
     <div className="space-y-6">
       {/* Google Analytics */}
@@ -246,7 +356,9 @@ function GlobalSeoForm({ initialGlobal }: { initialGlobal: SeoGlobal }) {
             className={inputClass}
           />
           <p className="text-xs text-gray-400 mt-1">
-            Obtén tu ID en Google Analytics → Admin → Data Streams
+            {en
+              ? "Get your ID in Google Analytics → Admin → Data Streams"
+              : "Obtén tu ID en Google Analytics → Admin → Data Streams"}
           </p>
         </div>
       </div>
@@ -259,7 +371,7 @@ function GlobalSeoForm({ initialGlobal }: { initialGlobal: SeoGlobal }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-              Nombre del negocio
+              {en ? "Business Name" : "Nombre del negocio"}
             </label>
             <input
               type="text"
@@ -271,7 +383,7 @@ function GlobalSeoForm({ initialGlobal }: { initialGlobal: SeoGlobal }) {
           </div>
           <div>
             <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-              Teléfono
+              {en ? "Phone" : "Teléfono"}
             </label>
             <input
               type="tel"
@@ -283,7 +395,7 @@ function GlobalSeoForm({ initialGlobal }: { initialGlobal: SeoGlobal }) {
           </div>
           <div className="md:col-span-2">
             <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-              Dirección
+              {en ? "Address" : "Dirección"}
             </label>
             <input
               type="text"
@@ -295,7 +407,7 @@ function GlobalSeoForm({ initialGlobal }: { initialGlobal: SeoGlobal }) {
           </div>
           <div>
             <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-              Latitud
+              {en ? "Latitude" : "Latitud"}
             </label>
             <input
               type="text"
@@ -307,7 +419,7 @@ function GlobalSeoForm({ initialGlobal }: { initialGlobal: SeoGlobal }) {
           </div>
           <div>
             <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-              Longitud
+              {en ? "Longitude" : "Longitud"}
             </label>
             <input
               type="text"
@@ -319,7 +431,7 @@ function GlobalSeoForm({ initialGlobal }: { initialGlobal: SeoGlobal }) {
           </div>
           <div>
             <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-              Horario (formato schema)
+              {en ? "Hours (schema format)" : "Horario (formato schema)"}
             </label>
             <input
               type="text"
@@ -331,16 +443,16 @@ function GlobalSeoForm({ initialGlobal }: { initialGlobal: SeoGlobal }) {
           </div>
           <div>
             <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-              Rango de precios
+              {en ? "Price Range" : "Rango de precios"}
             </label>
             <select
               value={data.schemaPriceRange || "€€"}
               onChange={(e) => set("schemaPriceRange", e.target.value)}
               className={`${inputClass} bg-white`}
             >
-              <option value="€">€ (Económico)</option>
-              <option value="€€">€€ (Moderado)</option>
-              <option value="€€€">€€€ (Alto)</option>
+              <option value="€">€ ({en ? "Budget" : "Económico"})</option>
+              <option value="€€">€€ ({en ? "Moderate" : "Moderado"})</option>
+              <option value="€€€">€€€ ({en ? "High" : "Alto"})</option>
               <option value="€€€€">€€€€ (Premium)</option>
             </select>
           </div>
@@ -363,11 +475,15 @@ function GlobalSeoForm({ initialGlobal }: { initialGlobal: SeoGlobal }) {
             <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${data.sitemapEnabled ? "translate-x-7" : "translate-x-1"}`} />
           </button>
           <span className="text-sm text-gray-700">
-            Sitemap automático {data.sitemapEnabled ? "activado" : "desactivado"}
+            {en
+              ? `Automatic sitemap ${data.sitemapEnabled ? "enabled" : "disabled"}`
+              : `Sitemap automático ${data.sitemapEnabled ? "activado" : "desactivado"}`}
           </span>
         </div>
         <p className="text-xs text-gray-400 mt-2">
-          Si está activado, /sitemap.xml se genera automáticamente. Accesible en{" "}
+          {en
+            ? "When enabled, /sitemap.xml is generated automatically. Available at "
+            : "Si está activado, /sitemap.xml se genera automáticamente. Accesible en "}
           <a href="/sitemap.xml" target="_blank" className="text-blue-500 hover:underline">/sitemap.xml</a>
         </p>
       </div>
@@ -378,10 +494,14 @@ function GlobalSeoForm({ initialGlobal }: { initialGlobal: SeoGlobal }) {
           disabled={saving}
           className="bg-gold hover:bg-gold-dark text-navy font-semibold px-6 py-2.5 rounded-lg text-sm transition-colors disabled:opacity-60"
         >
-          {saving ? "Guardando..." : "Guardar configuración global"}
+          {saving
+            ? (en ? "Saving..." : "Guardando...")
+            : (en ? "Save global settings" : "Guardar configuración global")}
         </button>
         {saved && (
-          <span className="text-green-600 text-sm font-medium">✓ Guardado correctamente</span>
+          <span className="text-green-600 text-sm font-medium">
+            {en ? "✓ Saved successfully" : "✓ Guardado correctamente"}
+          </span>
         )}
       </div>
     </div>
@@ -392,19 +512,27 @@ export default function SeoManager({
   pageSlugs,
   initialPages,
   initialGlobal,
+  defaultSeo,
+  adminLang,
 }: {
   pageSlugs: PageSlugConfig[];
   initialPages: SeoPage[];
   initialGlobal: SeoGlobal;
+  defaultSeo?: DefaultSeoMap;
+  adminLang?: "es" | "en";
 }) {
+  const lang = adminLang || "es";
   const [activeTab, setActiveTab] = useState<string>("global");
 
+  // Build a map keyed by "slug__locale" for easy lookup
   const pagesMap: Record<string, SeoPage> = {};
-  initialPages.forEach((p) => { pagesMap[p.slug] = p; });
+  initialPages.forEach((p) => {
+    pagesMap[`${p.slug}__${p.locale}`] = p;
+  });
 
   const tabs = [
-    { id: "global", label: "🌐 Global" },
-    ...pageSlugs.map((p) => ({ id: p.slug, label: `📄 ${p.labelEs}` })),
+    { id: "global", label: `🌐 ${lang === "en" ? "Global" : "Global"}` },
+    ...pageSlugs.map((p) => ({ id: p.slug, label: `📄 ${lang === "en" ? p.labelEn : p.labelEs}` })),
   ];
 
   return (
@@ -431,12 +559,14 @@ export default function SeoManager({
       {/* Tab content */}
       <div className="p-6">
         {activeTab === "global" ? (
-          <GlobalSeoForm initialGlobal={initialGlobal} />
+          <GlobalSeoForm initialGlobal={initialGlobal} adminLang={lang} />
         ) : (
           <SeoPageForm
             key={activeTab}
             slugConfig={pageSlugs.find((p) => p.slug === activeTab)!}
-            initialData={pagesMap[activeTab]}
+            pagesMap={pagesMap}
+            defaultSeo={defaultSeo}
+            adminLang={lang}
           />
         )}
       </div>

@@ -81,10 +81,11 @@ async function main() {
   ];
 
   for (const page of defaultPages) {
+    const locale = "es";
     await prisma.seoPage.upsert({
-      where: { slug: page.slug },
+      where: { slug_locale: { slug: page.slug, locale } },
       update: {},
-      create: page,
+      create: { ...page, locale },
     });
   }
   console.log("✅ Default SEO pages seeded");

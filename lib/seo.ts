@@ -5,10 +5,9 @@ export async function getSeoForPage(
   slug: string,
   locale: string = "es"
 ): Promise<Metadata> {
-  const [seoPage] = await Promise.all([
-    prisma.seoPage.findUnique({ where: { slug } }),
-    prisma.seoGlobal.findFirst(),
-  ]);
+  const seoPage = await prisma.seoPage.findUnique({
+    where: { slug_locale: { slug, locale } },
+  });
 
   const title = seoPage?.title || undefined;
   const description = seoPage?.metaDescription || undefined;
@@ -36,7 +35,9 @@ export async function getSeoGlobal() {
   return prisma.seoGlobal.findFirst();
 }
 
-export async function getPageH1(slug: string): Promise<string | null> {
-  const page = await prisma.seoPage.findUnique({ where: { slug } });
+export async function getPageH1(slug: string, locale: string = "es"): Promise<string | null> {
+  const page = await prisma.seoPage.findUnique({
+    where: { slug_locale: { slug, locale } },
+  });
   return page?.h1 || null;
 }

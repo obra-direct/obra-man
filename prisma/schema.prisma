@@ -19,7 +19,8 @@ model Lead {
 
 model SeoPage {
   id              String   @id @default(cuid())
-  slug            String   @unique
+  slug            String
+  locale          String   @default("es")
   title           String?
   metaDescription String?
   ogTitle         String?
@@ -29,6 +30,8 @@ model SeoPage {
   robots          String?  @default("index, follow")
   h1              String?
   updatedAt       DateTime @updatedAt
+
+  @@unique([slug, locale])
 }
 
 model SeoGlobal {
