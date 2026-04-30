@@ -402,13 +402,17 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <img
             src={settings.heroImageUrl}
             alt="Construcción en Barcelona"
-            className="w-full h-full object-cover"
+            className="h-full w-full min-h-full min-w-full object-cover object-center md:scale-105 md:object-[center_40%]"
             fetchPriority="high"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/80 to-navy/50" />
+          {/*
+            Mobile: classic left-heavy fade. Desktop: extend navy farther right so the strip
+            does not read as empty / disconnected at the edges.
+          */}
+          <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/78 via-45% to-navy/45 md:from-navy/92 md:via-navy/84 md:via-[52%] md:to-navy/68 lg:via-[58%] lg:to-navy/62 xl:to-navy/58" />
         </div>
-        <div className="container-custom relative z-10 py-12 sm:py-16 md:py-24">
-          <div className="max-w-2xl">
+        <div className="container-custom relative z-10 w-full py-12 sm:py-16 md:py-24">
+          <div className="max-w-2xl lg:max-w-3xl xl:max-w-[40rem]">
             <div className="inline-flex items-center gap-2 bg-gold/15 border border-gold/30 rounded-full px-3 py-1 sm:px-4 sm:py-1.5 mb-3 sm:mb-6">
               <div className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse shrink-0" />
               <span className="text-gold text-xs sm:text-sm font-semibold">Barcelona · Cataluña</span>
