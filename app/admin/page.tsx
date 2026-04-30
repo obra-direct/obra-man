@@ -17,7 +17,7 @@ export default function AdminLoginPage() {
     setError("");
 
     const res = await signIn("credentials", {
-      username,
+      username: username.trim(),
       password,
       redirect: false,
     });
