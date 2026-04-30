@@ -1,18 +1,23 @@
+-- CreateSchema
+CREATE SCHEMA IF NOT EXISTS "public";
+
 -- CreateTable
 CREATE TABLE "Lead" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
     "service" TEXT NOT NULL,
     "message" TEXT,
     "language" TEXT NOT NULL DEFAULT 'es',
     "status" TEXT NOT NULL DEFAULT 'new',
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Lead_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "SeoPage" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "slug" TEXT NOT NULL,
     "title" TEXT,
     "metaDescription" TEXT,
@@ -22,12 +27,14 @@ CREATE TABLE "SeoPage" (
     "canonical" TEXT,
     "robots" TEXT DEFAULT 'index, follow',
     "h1" TEXT,
-    "updatedAt" DATETIME NOT NULL
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "SeoPage_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "SeoGlobal" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "ga4Id" TEXT,
     "schemaName" TEXT DEFAULT 'Obra Man',
     "schemaAddress" TEXT DEFAULT 'Barcelona, Cataluña, España',
@@ -36,19 +43,46 @@ CREATE TABLE "SeoGlobal" (
     "schemaLng" TEXT DEFAULT '2.1734',
     "schemaHours" TEXT DEFAULT 'Mo-Fr 08:00-18:00',
     "schemaPriceRange" TEXT DEFAULT '€€',
-    "sitemapEnabled" BOOLEAN NOT NULL DEFAULT true
+    "sitemapEnabled" BOOLEAN NOT NULL DEFAULT true,
+
+    CONSTRAINT "SeoGlobal_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "AdminUser" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "username" TEXT NOT NULL,
-    "passwordHash" TEXT NOT NULL
+    "passwordHash" TEXT NOT NULL,
+
+    CONSTRAINT "AdminUser_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "SiteSettings" (
+    "id" TEXT NOT NULL,
+    "heroImageUrl" TEXT,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "SiteSettings_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "SiteContacts" (
+    "id" TEXT NOT NULL,
+    "phone" TEXT,
+    "whatsapp" TEXT,
+    "email" TEXT,
+    "address" TEXT,
+    "facebook" TEXT,
+    "instagram" TEXT,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "SiteContacts_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Service" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "slug" TEXT NOT NULL,
     "category" TEXT NOT NULL,
     "nameEs" TEXT NOT NULL,
@@ -58,7 +92,9 @@ CREATE TABLE "Service" (
     "descCa" TEXT,
     "descEn" TEXT,
     "visible" BOOLEAN NOT NULL DEFAULT true,
-    "sortOrder" INTEGER NOT NULL DEFAULT 0
+    "sortOrder" INTEGER NOT NULL DEFAULT 0,
+
+    CONSTRAINT "Service_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex

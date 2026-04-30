@@ -4,6 +4,9 @@ import { CATEGORY_PATH_ROWS } from "@/lib/category-path-config";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://obradirecta.cat";
 
+/** Queries DB at request time so builds do not require a live Postgres socket. */
+export const dynamic = "force-dynamic";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const seoGlobal = await prisma.seoGlobal.findFirst();
 

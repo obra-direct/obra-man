@@ -1,5 +1,6 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import type { Lead } from "@prisma/client";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import AdminShell from "@/components/admin/AdminShell";
@@ -77,7 +78,7 @@ export default async function DashboardPage() {
                     </td>
                   </tr>
                 ) : (
-                  recentLeads.map((lead) => (
+                  recentLeads.map((lead: Lead) => (
                     <tr key={lead.id} className="border-b border-gray-50 hover:bg-gray-50">
                       <td className="px-6 py-3 font-medium text-gray-900">{lead.name}</td>
                       <td className="px-6 py-3 text-gray-600">{lead.phone}</td>
