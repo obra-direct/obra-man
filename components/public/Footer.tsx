@@ -16,6 +16,8 @@ export default function Footer({ locale, contacts }: FooterProps) {
   const servicePath = locale === "es" ? "/servicios" : `/${locale}${locale === "ca" ? "/serveis" : "/services"}`;
   const contactPath = locale === "es" ? "/contacto" : `/${locale}${locale === "ca" ? "/contacte" : "/contact"}`;
   const aboutPath = locale === "es" ? "/sobre-nosotros" : `/${locale}${locale === "ca" ? "/sobre-nosaltres" : "/about"}`;
+  const privacyPath = locale === "es" ? "/politica-privacidad" : `/${locale}${locale === "ca" ? "/politica-privacitat" : "/privacy-policy"}`;
+  const legalPath = locale === "es" ? "/aviso-legal" : `/${locale}${locale === "ca" ? "/avis-legal" : "/legal-notice"}`;
 
   const trustBadges = [
     {
@@ -51,19 +53,23 @@ export default function Footer({ locale, contacts }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10">
           {/* Brand */}
           <div className="md:col-span-5">
-            <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-14 h-9 bg-gold rounded-md flex items-center justify-center p-1.5 shrink-0">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="size-14 bg-gold rounded-md flex items-center justify-center p-2 shrink-0">
                 <Image
                   src="/logo.png"
                   alt="ObraDirecta logo"
-                  width={30}
-                  height={30}
-                  className="brightness-0"
+                  width={40}
+                  height={40}
+                  className="brightness-0 size-8 object-contain"
                 />
               </div>
-              <div className="flex items-center gap-0.5">
-                <span className="text-gold font-bold text-xl">OBRA</span>
-                <span className="text-white font-bold text-xl">DIRECTA</span>
+              <div className="flex flex-col justify-center leading-none gap-0.5 min-w-0">
+                <span className="text-gold font-bold text-[1.375rem] sm:text-2xl tracking-tight">
+                  OBRA
+                </span>
+                <span className="text-white font-bold text-[0.6875rem] sm:text-[0.75rem] tracking-[0.12em] uppercase">
+                  DIRECTA
+                </span>
               </div>
             </div>
             <p className="text-sm text-gray-400 max-w-sm leading-relaxed mb-5">
@@ -125,8 +131,8 @@ export default function Footer({ locale, contacts }: FooterProps) {
                 { href: servicePath, label: nt("services") },
                 { href: aboutPath, label: nt("about") },
                 { href: contactPath, label: nt("contact") },
-                { href: "#", label: t("privacy") },
-                { href: "#", label: t("legal") },
+                { href: privacyPath, label: t("privacy") },
+                { href: legalPath, label: t("legal") },
               ].map((item) => (
                 <li key={item.href + item.label}>
                   <Link href={item.href} className="hover:text-gold transition-colors duration-200 flex items-center gap-1.5 group">

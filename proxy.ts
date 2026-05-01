@@ -54,6 +54,16 @@ const intlMiddleware = createMiddleware({
       ca: "/sobre-nosaltres",
       en: "/about",
     },
+    "/politica-privacidad": {
+      es: "/politica-privacidad",
+      ca: "/politica-privacitat",
+      en: "/privacy-policy",
+    },
+    "/aviso-legal": {
+      es: "/aviso-legal",
+      ca: "/avis-legal",
+      en: "/legal-notice",
+    },
   },
 });
 

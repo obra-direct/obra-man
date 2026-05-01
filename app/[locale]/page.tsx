@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import LeadForm from "@/components/public/LeadForm";
 import { SERVICE_CATEGORIES, getCategoryName } from "@/lib/services-data";
+import { getContacts } from "@/lib/contacts";
 import { getSeoForPage } from "@/lib/seo";
 import { getSettings } from "@/lib/settings";
 import {
@@ -346,11 +347,12 @@ function TestimonialsSection() {
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const [t, tFooter, tContact, settings] = await Promise.all([
+  const [t, tFooter, tContact, settings, contacts] = await Promise.all([
     getTranslations({ locale, namespace: "hero" }),
     getTranslations({ locale, namespace: "footer" }),
     getTranslations({ locale, namespace: "contact" }),
     getSettings(),
+    getContacts(),
   ]);
   const contactPath = locale === "es" ? "/contacto" : `/${locale}${locale === "ca" ? "/contacte" : "/contact"}`;
 
@@ -469,10 +471,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   <span className="text-sm font-semibold text-navy">{tFooter("callUs")}</span>
                 </div>
                 <a
-                  href={`tel:${tFooter("phone")}`}
+                  href={`tel:${contacts.phone.replace(/\s/g, "")}`}
                   className="text-base font-bold text-navy hover:text-gold transition-colors duration-150 tracking-wide"
                 >
-                  {tFooter("phone")}
+                  {contacts.phone}
                 </a>
                 <p className="text-xs text-gray-500 mt-1">{tContact("hours")}</p>
               </div>

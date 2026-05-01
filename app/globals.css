@@ -104,6 +104,17 @@
   /* Semantic border-radius scale for consistent rounding across components */
   .card-sm  { @apply rounded-xl; }   /* compact: badges, icon boxes, small cards */
   .card-lg  { @apply rounded-2xl; }  /* section-level: lead form, testimonials, modal */
+
+  /* Legal page prose styles */
+  .prose-legal ul { @apply list-disc pl-5 space-y-1.5; }
+  .prose-legal ol { @apply list-decimal pl-5 space-y-1.5; }
+  .prose-legal p { @apply mb-3 last:mb-0; }
+  .prose-legal a { @apply text-gold hover:underline; }
+  .prose-legal strong { @apply font-semibold text-gray-700; }
+  .prose-legal em { @apply italic text-gray-500; }
+  .prose-legal table { @apply w-full text-xs border-collapse mt-2 mb-3; }
+  .prose-legal th { @apply text-left bg-gray-50 px-3 py-2 font-semibold text-gray-700 border border-gray-200; }
+  .prose-legal td { @apply px-3 py-2 border border-gray-200 align-top; }
 }
 
 @layer utilities {

@@ -47,9 +47,9 @@ export default function LeadForm({
 
   const presetServiceId = useMemo(() => {
     if (presetServiceIdProp) return presetServiceIdProp;
-    if (!presetCategoryId) return "";
+    if (!presetCategoryId) return "other";
     const cat = SERVICE_CATEGORIES.find((c) => c.id === presetCategoryId);
-    return cat?.services[0]?.id ?? "";
+    return cat?.services[0]?.id ?? "other";
   }, [presetServiceIdProp, presetCategoryId]);
 
   const schema = buildSchema(t);
@@ -167,7 +167,7 @@ export default function LeadForm({
           className="form-input"
           aria-describedby={errors.service ? "lead-service-error" : undefined}
         >
-          <option value="">{t("form.servicePlaceholder")}</option>
+          <option value="other">{t("form.servicePlaceholder")}</option>
           {SERVICE_CATEGORIES.map((cat) => (
             <optgroup key={cat.id} label={
               locale === "ca" ? cat.nameCa : locale === "en" ? cat.nameEn : cat.nameEs

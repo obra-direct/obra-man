@@ -5,6 +5,7 @@ import { prisma } from "@/lib/db";
 import AdminShell from "@/components/admin/AdminShell";
 import ServicesManager from "@/components/admin/ServicesManager";
 import { SERVICE_CATEGORIES } from "@/lib/services-data";
+import { seoSlugForService } from "@/lib/service-category-routes";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = { title: "Servicios" };
@@ -39,16 +40,25 @@ export default async function AdminServicesPage() {
     }
   }
 
-  const services = await prisma.service.findMany({ orderBy: { sortOrder: "asc" } });
+  const serviceSeoSlugs = SERVICE_CATEGORIES.flatMap((cat) =>
+    cat.services.map((svc) => seoSlugForService(svc.id))
+  );
+
+  const [services, seoPages] = await Promise.all([
+    prisma.service.findMany({ orderBy: { sortOrder: "asc" } }),
+    prisma.seoPage.findMany({
+      where: { slug: { in: serviceSeoSlugs } },
+    }),
+  ]);
 
   return (
     <AdminShell>
       <div className="p-8">
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-gray-900 mb-1">Servicios</h1>
-          <p className="text-gray-500 text-sm">Gestiona la visibilidad y descripción de los servicios.</p>
+          <p className="text-gray-500 text-sm">Gestiona la visibilidad, descripción y SEO de los servicios.</p>
         </div>
-        <ServicesManager initialServices={services} />
+        <ServicesManager initialServices={services} initialSeoPages={seoPages} />
       </div>
     </AdminShell>
   );

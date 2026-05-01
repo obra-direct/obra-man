@@ -86,7 +86,7 @@
     "phone": "Phone",
     "phonePlaceholder": "6XX XXX XXX",
     "service": "Service of interest",
-    "servicePlaceholder": "Select a service",
+    "servicePlaceholder": "Other",
     "message": "Message (optional)",
     "messagePlaceholder": "Tell us more about your project...",
     "language": "Preferred language",
